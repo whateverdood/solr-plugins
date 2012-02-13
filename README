@@ -1,0 +1,11 @@
+_________________________________________
+solr-plugins README
+
+Welcome to solr-plugins, a sandbox for writing custom SOLR components, such as:
+
+    - UpdateRequestProcessors
+    - SearchComponents
+    - ParserPlugins
+    - and other stuff
+    
+This project is written in Groovy and built using Maven 2+.
