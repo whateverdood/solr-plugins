@@ -19,10 +19,10 @@ class ExtractingUpdateProcessorFactoryTest {
         def namespaces = ["xhtml": "http://www.w3.org/1999/xhtml"]
         def forEach = "/xhtml:html"
         def xpaths = [
-            "title": "xhtml:head/xhtml:title",
+            "title": "xhtml:head/xhtml:title/text()",
             "subject": "xhtml:head/xhtml:meta[@name='keywords']/@content",
-            "body": "xhtml:body",
-            "text": "descendant::text()"]
+            "body": "xhtml:body//text()",
+            "text": "descendant::*[not(local-name(.)='script')]/text()"]
         XPathExtractor htmlExtractor = new XPathExtractor(forEach: forEach,
             fieldMappings: xpaths, namespaces: namespaces,
             xmlReaderClazz: "org.ccil.cowan.tagsoup.Parser")
@@ -47,7 +47,7 @@ class ExtractingUpdateProcessorFactoryTest {
                 ["title", "subject", "body", "text"].each { field ->
                     assertNotNull "[$field] was not extracted", doc.getFieldValue(field)
                 }
-                // TODO: assert specific field values
+                println "Extracted doc is: $doc"
             }
         }
 
