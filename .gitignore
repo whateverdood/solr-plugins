@@ -1,0 +1,5 @@
+# don't push Maven generated stuff (yet)
+target
+
+# don't push Eclipse generated stuff (ever)
+bin
