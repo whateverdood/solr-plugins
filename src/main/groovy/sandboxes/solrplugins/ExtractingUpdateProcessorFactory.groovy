@@ -32,7 +32,7 @@ public class ExtractingUpdateProcessorFactory extends UpdateRequestProcessorFact
         void processAdd(AddUpdateCommand cmd) {
             SolrInputDocument doc = cmd.getSolrInputDocument()
             XPathExtractor extractor = 
-                Extractors.getBean(doc.getFieldValue("media-type"))
+                Extractors.getExtractor(doc.getFieldValue("media-type"))
             List extracted = extractor.extract(doc.getFieldValue("raw-content"))
             
             if (extracted.size()) {

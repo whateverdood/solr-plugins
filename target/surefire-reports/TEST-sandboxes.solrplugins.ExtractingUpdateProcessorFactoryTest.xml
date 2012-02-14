@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="3.296" errors="0" skipped="0" tests="1" name="sandboxes.solrplugins.DownloadingUpdateProcessorTest">
+<testsuite failures="0" time="0.73" errors="0" skipped="0" tests="1" name="sandboxes.solrplugins.ExtractingUpdateProcessorFactoryTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
@@ -65,5 +65,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="2.34" classname="sandboxes.solrplugins.DownloadingUpdateProcessorTest" name="downloads"/>
+  <testcase time="0.72" classname="sandboxes.solrplugins.ExtractingUpdateProcessorFactoryTest" name="test"/>
 </testsuite>

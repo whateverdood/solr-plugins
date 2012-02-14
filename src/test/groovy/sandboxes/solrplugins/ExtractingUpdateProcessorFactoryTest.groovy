@@ -7,27 +7,9 @@ import org.apache.solr.request.SolrQueryRequest
 import org.apache.solr.response.SolrQueryResponse
 import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
-import org.junit.BeforeClass
 import org.junit.Test
 
-import com.googlecode.shawty.XPathExtractor
-
 class ExtractingUpdateProcessorFactoryTest {
-    
-    @BeforeClass
-    public static void setUpExtractors() {
-        def namespaces = ["xhtml": "http://www.w3.org/1999/xhtml"]
-        def forEach = "/xhtml:html"
-        def xpaths = [
-            "title": "xhtml:head/xhtml:title/text()",
-            "subject": "xhtml:head/xhtml:meta[@name='keywords']/@content",
-            "body": "xhtml:body//text()",
-            "text": "descendant::*[not(local-name(.)='script')]/text()"]
-        XPathExtractor htmlExtractor = new XPathExtractor(forEach: forEach,
-            fieldMappings: xpaths, namespaces: namespaces,
-            xmlReaderClazz: "org.ccil.cowan.tagsoup.Parser")
-        Extractors.addExtractor("text/html", htmlExtractor)
-    }
     
     @Test
     public void test() {
