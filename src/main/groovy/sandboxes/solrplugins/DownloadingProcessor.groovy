@@ -32,7 +32,7 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
         // TODO: do this correctly
         doc.setField("media-type", "text/html")
 
-        LOG.debug "Downloaded [${doc.getFieldValue('raw-content').size()}] bytes from [$uri]."
+        LOG.info "Downloaded [${doc.getFieldValue('raw-content').size()}] bytes from [$uri]."
         
         super.next.processAdd(cmd)
     }

@@ -32,7 +32,7 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
             extract.each { k, v ->
                 doc.setField(k, v)
             }
-            LOG.debug "Extracted [${extract.keySet().size()}] fields."
+            LOG.info "Extracted [${extract.keySet().size()}] fields."
         }
         
         super.next.processAdd(cmd)
