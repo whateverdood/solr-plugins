@@ -294,11 +294,13 @@
          openSearcher - if false, the commit causes recent index changes
          to be flushed to stable storage, but does not cause a new
          searcher to be opened to make those changes visible.
-      -->
+
      <autoCommit> 
+       <maxDocs>10</maxDocs>
        <maxTime>15000</maxTime> 
        <openSearcher>false</openSearcher> 
      </autoCommit>
+      -->
 
     <!-- softAutoCommit is like autoCommit except it causes a
          'soft' commit which only ensures that changes are visible
@@ -1510,7 +1512,7 @@
 
     --> 
     
-  <updateRequestProcessorChain name="fullservice">
+  <updateRequestProcessorChain name="fullservice" default="true">
     <processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />

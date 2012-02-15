@@ -33,7 +33,7 @@ class ExtractingUpdateProcessorFactoryTest {
             }
         }
 
-        ExtractingUpdateProcessorFactory.ExtractingProcessor ep =
+        ExtractingProcessor ep =
             new ExtractingUpdateProcessorFactory().getInstance(
                 request, response, nextStep)
 

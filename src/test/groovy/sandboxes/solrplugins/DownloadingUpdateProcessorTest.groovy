@@ -27,7 +27,7 @@ class DownloadingUpdateProcessorTest {
             }
         }
         
-        DownloadingUpdateProcessorFactory.DownloadingProcessor dldr = 
+        DownloadingProcessor dldr = 
             new DownloadingUpdateProcessorFactory().getInstance(
                 request, response, nextStep)
                 
