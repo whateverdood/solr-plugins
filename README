@@ -1,4 +1,4 @@
-_________________________________________
+_______________________________________________________________________________
 solr-plugins README
 
 Welcome to solr-plugins, a sandbox for writing custom SOLR components, such as:
@@ -8,8 +8,11 @@ Welcome to solr-plugins, a sandbox for writing custom SOLR components, such as:
     - ParserPlugins
     - and other stuff
     
-This project is written in Groovy and built using Maven 3.
-_______________________________
+This project is written in Groovy and built using Maven 3. It also includes
+Eclipse .project and .classpath files as well as some .settings if you're 
+interested.
+
+_______________________________________________________________________________
 Before you build
 
 1. Install Maven 3
