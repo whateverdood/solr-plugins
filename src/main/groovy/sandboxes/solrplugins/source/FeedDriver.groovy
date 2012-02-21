@@ -1,9 +1,9 @@
-package sandboxes.solrplugins
+package sandboxes.solrplugins.source
 
 import org.apache.log4j.BasicConfigurator
 import org.apache.log4j.Logger
-import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.client.solrj.impl.LBHttpSolrServer
+import org.apache.solr.client.solrj.SolrServer
+import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer
 import org.apache.solr.common.SolrInputDocument
 
 import com.sun.syndication.io.SyndFeedInput
@@ -31,9 +31,9 @@ class FeedDriver {
             throw new IllegalArgumentException("Nothing to do.")
         }
 
-        SolrServer solrCluster = new LBHttpSolrServer("http://localhost:8983/solr", "http://localhost:7983/solr")
-        int commitWithinMsecs = 10000
-        def docs = []
+        SolrServer solrCluster = new CommonsHttpSolrServer(
+            "http://localhost:8983/solr/collection1")
+        int commitWithinMsecs = 60000
 
         options.arguments().each { arg -> 
             def syndFeed = new SyndFeedInput().build(new InputStreamReader(
@@ -48,12 +48,9 @@ class FeedDriver {
                     Logger.getRootLogger().info("Not indexing: $doc")
                 } else {
                     Logger.getRootLogger().info("Indexing: $doc")
-                    docs << doc
+                    solrCluster.add(doc, commitWithinMsecs)
                 }
             }
-        }
-        if (!options.n) {
-            solrCluster.add(docs, commitWithinMsecs)
         }
     }
 }

@@ -1513,6 +1513,7 @@
     --> 
     
   <updateRequestProcessorChain name="fullservice" default="true">
+    <processor class="solr.DistributedUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />
