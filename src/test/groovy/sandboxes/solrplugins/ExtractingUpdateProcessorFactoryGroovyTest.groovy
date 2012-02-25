@@ -9,7 +9,10 @@ import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
 import org.junit.Test
 
-class ExtractingUpdateProcessorFactoryTest {
+import sandboxes.solrplugins.ExtractingProcessorGroovy;
+import sandboxes.solrplugins.ExtractingUpdateProcessorFactoryGroovy;
+
+class ExtractingUpdateProcessorFactoryGroovyTest {
     
     @Test
     public void test() {
@@ -33,8 +36,8 @@ class ExtractingUpdateProcessorFactoryTest {
             }
         }
 
-        ExtractingProcessor ep =
-            new ExtractingUpdateProcessorFactory().getInstance(
+        ExtractingProcessorGroovy ep =
+            new ExtractingUpdateProcessorFactoryGroovy().getInstance(
                 request, response, nextStep)
 
         ep.processAdd([getSolrInputDocument: { doc }] as AddUpdateCommand)

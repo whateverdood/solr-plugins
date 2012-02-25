@@ -7,11 +7,13 @@ import org.apache.solr.response.SolrQueryResponse
 import org.apache.solr.update.processor.UpdateRequestProcessor
 import org.apache.solr.update.processor.UpdateRequestProcessorFactory
 
-public class DownloadingUpdateProcessorFactory extends UpdateRequestProcessorFactory {
+import sandboxes.solrplugins.DownloadingProcessor;
+
+public class DownloadingUpdateProcessorFactoryGroovy extends UpdateRequestProcessorFactory {
     
-    private static final Logger LOG = Logger.getLogger(DownloadingUpdateProcessorFactory.class)
+    private static final Logger LOG = Logger.getLogger(DownloadingUpdateProcessorFactoryGroovy.class)
     
-    public DownloadingUpdateProcessorFactory() {
+    public DownloadingUpdateProcessorFactoryGroovy() {
         // Do nothing.
     }
 
@@ -24,7 +26,7 @@ public class DownloadingUpdateProcessorFactory extends UpdateRequestProcessorFac
     @Override
     public UpdateRequestProcessor getInstance(SolrQueryRequest req, 
         SolrQueryResponse resp, UpdateRequestProcessor np) {
-        return new DownloadingProcessor(np)
+        return new DownloadingProcessorGroovy(np)
     }
         
 }

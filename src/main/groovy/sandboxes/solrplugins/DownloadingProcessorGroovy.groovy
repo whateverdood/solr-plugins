@@ -7,11 +7,11 @@ import org.apache.solr.common.SolrInputDocument
 import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
 
-public class DownloadingProcessor extends UpdateRequestProcessor {
+public class DownloadingProcessorGroovy extends UpdateRequestProcessor {
 
-    private static final Logger LOG = Logger.getLogger(DownloadingProcessor.class)
+    private static final Logger LOG = Logger.getLogger(DownloadingProcessorGroovy.class)
     
-    public DownloadingProcessor(UpdateRequestProcessor next) {
+    public DownloadingProcessorGroovy(UpdateRequestProcessor next) {
         super(next)
     }
 
