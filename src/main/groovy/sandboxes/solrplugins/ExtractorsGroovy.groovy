@@ -1,11 +1,12 @@
 package sandboxes.solrplugins
 
+
 import com.googlecode.shawty.XPathExtractor
 
 /**
  * Fake Extractors bean context.
  */
-class Extractors {
+class ExtractorsGroovy {
     
     static beans = [:]
     
@@ -20,7 +21,7 @@ class Extractors {
         XPathExtractor htmlExtractor = new XPathExtractor(forEach: forEach,
             fieldMappings: xpaths, namespaces: namespaces,
             xmlReaderClazz: "org.ccil.cowan.tagsoup.Parser")
-        Extractors.addExtractor("text/html", htmlExtractor)
+        ExtractorsGroovy.addExtractor("text/html", htmlExtractor)
     }
     
     public static void addExtractor(String name, XPathExtractor extractor) {

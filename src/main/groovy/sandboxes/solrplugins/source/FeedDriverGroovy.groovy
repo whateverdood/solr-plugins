@@ -8,7 +8,7 @@ import org.apache.solr.common.SolrInputDocument
 
 import com.sun.syndication.io.SyndFeedInput
 
-class FeedDriver {
+class FeedDriverGroovy {
 
     public static void main(String[] args) {
         
@@ -16,7 +16,7 @@ class FeedDriver {
         BasicConfigurator.configure()
 
         def cli = new groovy.util.CliBuilder(
-            usage: "java ${FeedDriver.class.getName()} [feed url] ${System.getProperty('line.separator')}" +
+            usage: "java ${FeedDriverGroovy.class.getName()} [feed url] ${System.getProperty('line.separator')}" +
             "Parses an Atom or RSS feed and submits entries to the cluster for indexing.",
             header: "options")
         cli.n(longOpt: "noIndex", "No index - download and parse only.")

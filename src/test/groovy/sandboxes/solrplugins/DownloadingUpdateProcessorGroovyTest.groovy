@@ -9,7 +9,10 @@ import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
 import org.junit.Test
 
-class DownloadingUpdateProcessorTest {
+import sandboxes.solrplugins.DownloadingProcessorGroovy;
+import sandboxes.solrplugins.DownloadingUpdateProcessorFactoryGroovy;
+
+class DownloadingUpdateProcessorGroovyTest {
     
     @Test
     public void downloads() throws Exception {
@@ -24,11 +27,12 @@ class DownloadingUpdateProcessorTest {
                 // the "raw-content" field should have been populated when
                 // this step is executed 
                 assertNotNull doc.getFieldValue("raw-content")
+				System.out.println(doc.getFieldValue("raw-content"));
             }
         }
         
-        DownloadingProcessor dldr = 
-            new DownloadingUpdateProcessorFactory().getInstance(
+        DownloadingProcessorGroovy dldr = 
+            new DownloadingUpdateProcessorFactoryGroovy().getInstance(
                 request, response, nextStep)
                 
         dldr.processAdd([getSolrInputDocument: { doc }] as AddUpdateCommand)

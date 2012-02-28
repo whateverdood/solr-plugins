@@ -5,13 +5,15 @@ import org.apache.solr.common.SolrInputDocument
 import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
 
+import sandboxes.solrplugins.Extractors;
+
 import com.googlecode.shawty.XPathExtractor
 
-public class ExtractingProcessor extends UpdateRequestProcessor {
+public class ExtractingProcessorGroovy extends UpdateRequestProcessor {
 
-    private static final Logger LOG = Logger.getLogger(ExtractingProcessor.class)
+    private static final Logger LOG = Logger.getLogger(ExtractingProcessorGroovy.class)
     
-    public ExtractingProcessor(UpdateRequestProcessor next) {
+    public ExtractingProcessorGroovy(UpdateRequestProcessor next) {
         super(next)
     }
 
