@@ -40,8 +40,7 @@ class MergingUpdateProcessor extends UpdateRequestProcessor {
         
         if (docs.size()) {
             SolrDocument existing = docs.get(0)
-            if (LOG.isDebugEnabled())
-                LOG.debug "Found existing doc: [$existing]"
+            LOG.info "Found existing doc for id: [$id]; will merge."
             doc = merge(doc, ClientUtils.toSolrInputDocument(existing))
         }
         
@@ -55,7 +54,9 @@ class MergingUpdateProcessor extends UpdateRequestProcessor {
             
         current.each { k, v ->
             if (!mods.get(k)) {
-                mods.setField(k, v.value)
+                if (!"score".equals(k)) {
+                    mods.setField(k, v.value)
+                }
             }
         }
         

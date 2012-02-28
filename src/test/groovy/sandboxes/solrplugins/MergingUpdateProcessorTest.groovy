@@ -31,6 +31,7 @@ class MergingUpdateProcessorTest extends GMockTestCase {
         current.setField("body", "The quick brown fox jumps over the lazy dog.")
         current.setField("text", "foo The quick brown fox jumps over the lazy dog.")
         current.setField("added", "yesterday")
+        current.setField("score", "1.0")
         
         SolrDocumentList solrDocList = mock(SolrDocumentList)
         solrDocList.size().returns(1).stub()
@@ -54,6 +55,7 @@ class MergingUpdateProcessorTest extends GMockTestCase {
                 SolrInputDocument actual = cmd.getSolrInputDocument()
                 assertEquals "New field got lost?", "bar baz", actual.getFieldValue("subject")
                 assertEquals "Old field got lost?", "yesterday", actual.getFieldValue("added")
+                assertNull actual.getFieldValue("score")
             }
         }
 
