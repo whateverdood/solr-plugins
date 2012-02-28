@@ -9,7 +9,7 @@ import com.googlecode.shawty.XPathExtractor
 
 public class ExtractingProcessor extends UpdateRequestProcessor {
 
-    private static final Logger LOG = Logger.getLogger(ExtractingProcessor.class)
+    private static final Logger LOG = Logger.getLogger(ExtractingProcessor)
     
     public ExtractingProcessor(UpdateRequestProcessor next) {
         super(next)

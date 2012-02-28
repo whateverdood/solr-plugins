@@ -9,7 +9,7 @@ import org.apache.solr.update.AddUpdateCommand
 import org.apache.solr.update.processor.UpdateRequestProcessor
 import org.junit.Test
 
-class ExtractingUpdateProcessorFactoryTest {
+class ExtractingUpdateProcessorTest {
     
     @Test
     public void test() {
