@@ -1,11 +1,14 @@
 package sandboxes.solrplugins;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import static org.junit.Assert.*;
+import java.net.URL;
 
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.request.SolrQueryRequest;
@@ -36,9 +39,9 @@ public class DownloadingUpdateProcessorTest {
         
         doAnswer(new Answer<Object>() {
             public Object answer(InvocationOnMock invocation) {
-            	String content = (String) doc.getFieldValue("raw-content");
+            	byte[] content = (byte[]) doc.getFieldValue("raw-content");
                 assertNotNull(content);
-                assertTrue("Content wasn't properly downloaded.", content.length() > 100);
+                assertTrue("Content wasn't properly downloaded.", content.length > 100);
                 return null;
             }
         }).when(nextStep).processAdd(any(AddUpdateCommand.class));
@@ -50,7 +53,25 @@ public class DownloadingUpdateProcessorTest {
         
         AddUpdateCommand dldrCmd = when(mock(AddUpdateCommand.class).getSolrInputDocument()).thenReturn(doc).getMock();
         dldr.processAdd(dldrCmd);
-                
+    }
+	
+	
+	@Test
+    public void detectContent() throws Exception {
+		
+        DownloadingProcessor dldr = 
+            (DownloadingProcessor) new DownloadingUpdateProcessorFactory().getInstance(
+		    request, response, nextStep);
+        
+        assertEquals("text/html", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.html"))));
+        assertEquals("application/pdf", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.pdf"))));
+        assertEquals("application/vnd.openxmlformats-officedocument.wordprocessingml.document", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.docx"))));
+        assertEquals("image/jpeg", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.jpg"))));
+        assertEquals("application/rss+xml", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this-rss.xml"))));
+        
+        //Currently being extracted as application/xml, not the more specific subtype.
+//        assertEquals("application/atom+xml", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this-atom.xml"))));
+//        assertEquals("application/xml", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.xml"))));
     }
 
 }

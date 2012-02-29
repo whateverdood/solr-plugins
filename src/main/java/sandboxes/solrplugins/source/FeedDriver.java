@@ -24,6 +24,8 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
 public class FeedDriver {
+	
+	private static final Logger LOG = Logger.getLogger(FeedDriver.class);
 
 	private static String solrUrl = "http://localhost:8983/solr/collection1";
 
@@ -37,12 +39,9 @@ public class FeedDriver {
 		try {
 			return new CommonsHttpSolrServer(solrUrl);
 		} catch (MalformedURLException ex) {
+			LOG.error("The supplied solrUrl was malformed, please verify.", ex);
 		}
 		return null;
-	}
-
-	public FeedDriver() throws MalformedURLException {
-		solrCluster = new CommonsHttpSolrServer(solrUrl);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -107,7 +106,6 @@ public class FeedDriver {
 		SolrInputDocument doc = new SolrInputDocument();
 		doc.setField("id", entry.getLink());
 		doc.setField("uri", entry.getLink());
-		doc.setField("media-type", "text/html"); // for now
 
 		return doc;
 	}

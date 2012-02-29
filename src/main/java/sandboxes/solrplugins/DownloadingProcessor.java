@@ -9,13 +9,18 @@ import org.apache.log4j.Logger;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
-
-import sandboxes.solrplugins.DownloadingProcessor;
+import org.apache.tika.detect.DefaultDetector;
+import org.apache.tika.detect.Detector;
+import org.apache.tika.io.TikaInputStream;
+import org.apache.tika.metadata.Metadata;
 
 public class DownloadingProcessor extends UpdateRequestProcessor {
 
 	private static final Logger LOG = Logger
 			.getLogger(DownloadingProcessor.class);
+	
+	private Detector detector = new DefaultDetector();
+	
 
 	public DownloadingProcessor(UpdateRequestProcessor next) {
 		super(next);
@@ -28,22 +33,23 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 			throw new IllegalArgumentException(
 					"No \"uri\" field set - nothing to do.");
 		}
-		URL url = new URL(uri);
-		if (StringUtils.equalsIgnoreCase("file", url.getProtocol())) {
-			doc.setField("raw-content", IOUtils.toString(url.openStream()));
-		} else {
-			doc.setField("raw-content", download(url));
-		}
+		byte[] rawContent = download(new URL(uri));
+		//We want to save the raw-content so we can index in place. Saving a byte[] since we aren't guaranteed to have text
+		doc.setField("raw-content", rawContent);
 
-		// TODO: do this correctly
-		doc.setField("media-type", "text/html");
+		doc.setField("media-type", detectContentType(rawContent));
 
 		LOG.info("Downloaded [${doc.getFieldValue('raw-content').size()}] bytes from [$uri].");
 
 		super.next.processAdd(cmd);
 	}
 
-	String download(URL url) {
-		return url.toString();
+	protected byte[] download(URL url) throws IOException {
+		return IOUtils.toByteArray(url.openStream());
 	}
+	
+	protected String detectContentType(byte[] content) throws IOException{
+		return detector.detect(TikaInputStream.get(content), new Metadata()).toString();
+	}
+	
 }
