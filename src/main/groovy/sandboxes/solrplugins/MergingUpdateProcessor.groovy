@@ -35,7 +35,7 @@ class MergingUpdateProcessor extends UpdateRequestProcessor {
             
         SolrDocumentList docs = SolrPluginUtils.docListToSolrDocumentList(
             docList, request.getSearcher(), 
-            ["id", "uri", "title", "subject", "body", "text"] as Set, 
+            null, // is no field set okay?
             new HashMap<SolrDocument, Integer>())
         
         if (docs.size()) {

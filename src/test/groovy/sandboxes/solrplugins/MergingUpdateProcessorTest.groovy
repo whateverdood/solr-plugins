@@ -45,8 +45,7 @@ class MergingUpdateProcessorTest extends GMockTestCase {
             doSimpleQuery("id:\"http://foo/bar\"", request, 0, 1).
                 returns(null).stub()
             docListToSolrDocumentList(
-                null, request.getSearcher(), 
-                ["id", "uri", "title", "subject", "body", "text"] as Set,
+                null, request.getSearcher(), null, 
                 new HashMap<SolrDocument, Integer>()).returns(solrDocList).stub()
         }
 
