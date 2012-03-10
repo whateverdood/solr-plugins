@@ -513,13 +513,15 @@
    <field name="author" type="text_general" indexed="true" stored="true"/>
    <field name="keywords" type="text_general" indexed="true" stored="true"/>
    <field name="category" type="text_general" indexed="true" stored="true"/>
-   <field name="content_type" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="last_modified" type="date" indexed="true" stored="true"/>
+   <field name="content-type" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="updated-on" type="tdate" indexed="true" stored="true" default="NOW"/>
+   <field name="indexed-on" type="tdate" indexed="true" stored="true" default="NOW" />
    <field name="links" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="media-type" type="string" indexed="true" stored="false" />
    <field name="body" type="text_general" indexed="true" stored="false" termVectors="true" termPositions="true" termOffsets="true" />
    <field name="uri" type="string" indexed="true" stored="true" />
    <field name="raw-content" type="string" indexed="false" stored="true" />
+   <field name="likes" type="pint" indexed="true" stored="true" />
 
    <!-- catchall field, containing all other searchable text fields (implemented
         via copyField further on in this schema  -->

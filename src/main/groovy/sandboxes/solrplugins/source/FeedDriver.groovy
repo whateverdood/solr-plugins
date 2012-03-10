@@ -4,6 +4,7 @@ import org.apache.log4j.BasicConfigurator
 import org.apache.log4j.Logger
 import org.apache.solr.client.solrj.SolrServer
 import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer
+import org.apache.solr.client.solrj.request.UpdateRequest
 import org.apache.solr.common.SolrInputDocument
 
 import com.sun.syndication.io.SyndFeedInput
@@ -31,24 +32,30 @@ class FeedDriver {
             throw new IllegalArgumentException("Nothing to do.")
         }
 
-        SolrServer solrCluster = new CommonsHttpSolrServer(
+        SolrServer solr = new CommonsHttpSolrServer(
             "http://localhost:8983/solr/collection1")
         int commitWithinMsecs = 60000
 
-        options.arguments().each { arg -> 
+        options.arguments().each { feed -> 
             def syndFeed = new SyndFeedInput().build(new InputStreamReader(
-                new URL(arg).newInputStream()))
+                new URL(feed).newInputStream()))
             syndFeed.entries.each { entry ->
+                def req = new UpdateRequest()
+                req.setCommitWithin(commitWithinMsecs)
+                req.setParam("update.chain", "docHandler")
+                
                 def doc = new SolrInputDocument()
                 doc.setField("id", entry.link)
                 doc.setField("uri", entry.link)
                 doc.setField("media-type", "text/html") // for now
                 
+                req.add(doc)
+                
                 if (options.n) {
                     Logger.getRootLogger().info("Not indexing: $doc")
                 } else {
                     Logger.getRootLogger().info("Indexing: $doc")
-                    solrCluster.add(doc, commitWithinMsecs)
+                    req.process(solr)
                 }
             }
         }

@@ -26,17 +26,14 @@ class MergingUpdateProcessor extends UpdateRequestProcessor {
     void processAdd(AddUpdateCommand cmd) throws IOException {
         
         SolrInputDocument doc = cmd.getSolrInputDocument()
-        def id = doc.getFieldValue("id")
+        def id = doc?.getFieldValue("id")
         
         if (LOG.isDebugEnabled())
             LOG.debug "Searching for doc id: [$id] "
         
-        DocList docList = SolrPluginUtils.doSimpleQuery("id:\"$id\"", request, 0, 1)
-            
         SolrDocumentList docs = SolrPluginUtils.docListToSolrDocumentList(
-            docList, request.getSearcher(), 
-            null, // is no field set okay?
-            new HashMap<SolrDocument, Integer>())
+            SolrPluginUtils.doSimpleQuery("id:\"$id\"", request, 0, 1), 
+            request.getSearcher(), null, new HashMap<SolrDocument, Integer>())
         
         if (docs.size()) {
             SolrDocument existing = docs.get(0)
@@ -47,20 +44,27 @@ class MergingUpdateProcessor extends UpdateRequestProcessor {
         next.processAdd(cmd)
 	}
     
-    // Merge precedence favors "mods"
-    SolrInputDocument merge(SolrInputDocument mods, SolrInputDocument current) {
+    /*
+     * Merging favors "fresh" over "existing", except for field values that existed
+     * on "old". The idea is a newer version of the doc might have been downloaded
+     * but we don't want to loose any meta-data that was added to the document,
+     * such as "likes", "read", "shared", etc. 
+     */
+    SolrInputDocument merge(SolrInputDocument fresh, SolrInputDocument existing) {
         if (LOG.isDebugEnabled())
-            LOG.debug "Merging [$mods] with [$current]"
+            LOG.debug "Merging fresh: ${System.getProperty('line.separator')} [$fresh] " +
+                "${System.getProperty('line.separator')}with existing: " +
+                "${System.getProperty('line.separator')}[$existing]"
             
-        current.each { k, v ->
-            if (!mods.get(k)) {
+        existing.each { k, v ->
+            if (!fresh.get(k)) {
                 if (!"score".equals(k)) {
-                    mods.setField(k, v.value)
+                    fresh.setField(k, v.value)
                 }
             }
         }
         
-        return mods
+        return fresh
     }
     
 }

@@ -1512,13 +1512,22 @@
 
     --> 
     
-  <updateRequestProcessorChain name="fullservice" default="true">
+  <updateRequestProcessorChain name="docHandler">
     <processor class="solr.DistributedUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.MergingUpdateProcessorFactory" />
     <processor class="solr.RunUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+  
+  <updateRequestProcessorChain name="likeHandler">
+    <processor class="solr.DistributedUpdateProcessorFactory" />
+    <!-- TODO: need a LoadDocFromIndexUpdateRequestProcessor -->
+    <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
+    <processor class="sandboxes.solrplugins.MergingUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+    <processor class="solr.LogUpdateProcessorFactory" />  
   </updateRequestProcessorChain>
     
   <!-- Deduplication
