@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/' xmlns:gCal='http://schemas.google.com/gCal/2005'><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic</id><updated>2012-02-07T11:38:47.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>http://na11.apachecon.com/ical/</title><subtitle type='text'>http://na11.apachecon.com/ical/</subtitle><link rel='alternate' type='text/calendar' href='http://na11.apachecon.com/ical/'/><link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic'/><link rel='http://schemas.google.com/g/2005#batch' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/batch'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic?max-results=25'/><link rel='next' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic?start-index=26&amp;max-results=25'/><author><name>http://na11.apachecon.com/ical/</name></author><generator version='1.0' uri='http://www.google.com/calendar'>Google Calendar</generator><openSearch:totalResults>111</openSearch:totalResults><openSearch:startIndex>1</openSearch:startIndex><openSearch:itemsPerPage>25</openSearch:itemsPerPage><gCal:timezone value='UTC'/><gCal:timesCleaned value='0'/><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6e9i</id><published>2011-11-09T17:37:44.000Z</published><updated>2011-11-10T01:37:45.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Realtime Big Data at Facebook with Hadoop and HBase</title><summary type='html'>When: Fri Nov 11, 2011 6pm to 6:50pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Fri Nov 11, 2011 6pm to 6:50pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Facebook has one of the largest Apache Hadoop data warehouses in the world, primarily queried through Apache Hive for offline data processing and analytics.  However, the need for realtime analytics and end-user access has led to the development of several new systems built using Apache HBase.  This talk will cover specific use cases and the work done at Facebook around building large scale, low latency and high throughput realtime services with Hadoop and HBase.  This includes several significant contributions to existing projects as well as the release of new open source projects.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2ZTlpIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6e9i'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d9h</id><published>2011-11-03T12:32:25.000Z</published><updated>2011-11-03T19:32:26.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Fast Feather Talks: Wookie &amp;amp; Rave</title><summary type='html'>When: Fri Nov 11, 2011 9pm to 9:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Fri Nov 11, 2011 9pm to 9:20pm 
+UTC&lt;br /&gt;
+
+
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Learn how to Easily create usable and accessible widgets for Apache Wookie and Apache Rave!</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cTMyZDloIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d9h'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sjic1h</id><published>2011-11-03T12:32:25.000Z</published><updated>2011-11-03T19:32:26.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Fast Feather Talks: OODT, RADiX, Hadoop</title><summary type='html'>When: Thu Nov 10, 2011 12am to 12:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon F
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 12am to 12:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon F
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: For those of you who&amp;#39;ve yet to discover Fast Feather sessions, they are a series of fast-paced 20 minute talks covering new and exciting projects and activities at and around Apache. 
+
+Talks scheduled for this hour include:
+
+* How to Spin up Apache OODT Faster with RADiX - with Cameron Goodale
+* Rapid and flexible clinical data extraction and processing using Apache OODT (Object Oriented Data Technology) - with Paul Veeravatanayothin
+* Building your own Hadoop distribution - with Roman Shaposhnik</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2ppYzFoIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sjic1h'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sjic1k</id><published>2011-11-03T12:32:25.000Z</published><updated>2011-11-03T19:32:26.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Fast Feather Talks: Lucene, Axis2, James</title><summary type='html'>When: Thu Nov 10, 2011 1am to 1:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon F
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 1am to 1:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon F
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: For those of you who&amp;#39;ve yet to discover Fast Feather sessions, they are a series of fast-paced 20 minute talks covering new and exciting projects and activities at and around Apache. 
+Scheduled for this hour are:
+* Unique Experience in Adopting Apache Lucene for Asian Countries - with Esen Sagynov
+* What is new in upcoming Axis2 1.7 - with Sagara Gunathunga
+* 4 mailbox technologies with James mail server 3.0 - with Eric Charles</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2ppYzFrIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sjic1k'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d1m</id><published>2011-11-03T12:32:25.000Z</published><updated>2011-11-03T19:32:26.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Fast Feather Talks: Arivata &amp;amp; Callback</title><summary type='html'>When: Thu Nov 10, 2011 5:10pm to 5:50pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon F
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 5:10pm to 5:50pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon F
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: 9:10AM: AIRAVATA: Gateway to Grids &amp;amp; Clouds with Suresh Marru
+
+9:30AM: Apache Callback with Jukka Zitting</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cTMyZDFtIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d1m'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d9g</id><published>2011-11-03T12:32:25.000Z</published><updated>2011-11-03T19:32:26.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Fast Feather Talks: Apache OpenOffice Update</title><summary type='html'>When: Thu Nov 10, 2011 9pm to 9:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 9pm to 9:20pm 
+UTC&lt;br /&gt;
+
+
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Update on the new Apache OpenOffice podling, current status, fun ways to get involved easily.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cTMyZDlnIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q32d9g'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q30c1o</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Wicket meets Scala and CouchDB</title><summary type='html'>When: Wed Nov 9, 2011 9:30pm to 10:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon F
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Wed Nov 9, 2011 9:30pm to 10:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon F
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: This session goes through the environment setup of a Java Web application built over Wicket, Scala and CouchDB, to a full application development, demonstrating what can be done to improve productivity of the development process of small to medium-size web apps. The intent is to present to developers and atendees the benefits of this architecture and how their projects could be built in less time achieving superiour code quality, with less lines of code.
+
+Apache Wicket is a successfull Top Level Project at the Apache Software Foundation. Its aim is to bring simplicity and perfect distinction between presentation layer and server-side code. Apache CouchDB is one of the most straight-forward document-based NoSQL datastores. Scala is a functional, type-safe and object-oriented programming language on top of the Java Platform.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cTMwYzFvIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q30c1o'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6dhk</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Using OODT to Support Data-driven Clinical Decision Support</title><summary type='html'>When: Thu Nov 10, 2011 12am to 12:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon A
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 12am to 12:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon A
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: OODT traces its roots to planetary and Earth science data systems to support research at the NASA Jet Propulsion Laboratory. Today, as an open-source project at Apache, OODT has a thriving and diverse community that includes projects in Cancer Research, Radio Astronomy, Pediatric Care, Computer Modeling, and Visualization. This session will discuss how many of the components of OODT have been used in concert to develop end-to-end data analysis infrastructures for examining large volumes of complex medical data. Motivated by, and illustrated with, concrete examples from our experience developing an infrastructure for data-driven decision support at the Whittier Virtual Pediatric Intensive Care Unit at Childrens Hospital Los Angeles.
+
+Topics include:
+
+- How the OODT Product Server component can be used to bring together data from multiple upstream sources 
+- How the OODT File Manager component can be used to manage scalable collections of data + metadata
+- How the OODT Workflow Manager component helps build composable workflows for de-identification, aggregation, and analysis 
+- How the OODT Web-Grid and web services can help to distribute research data to both users and applications
+- How OODT Balance can help in developing purpose-built interfaces for data discovery and visualization</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2ZGhrIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6dhk'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6d9l</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Using OODT @ JPL data systems</title><summary type='html'>When: Wed Nov 9, 2011 10:30pm to 11:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon A
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Wed Nov 9, 2011 10:30pm to 11:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon A
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Apache��� OODT (Object-Oriented Data Technology) is being used to support multiple science data systems at NASA&amp;#39;s Jet Propulsion Laboratory (JPL). In the scientific data systems domain, one of the critical functions that data systems must provide is to enable users to efficiently discover, find, access, and readily utilize useful science content from NASA���s increasingly large volumes of multi-mission, multi-instrument science data heterogeneously distributed among NASA���s data sources at various geographic locations.
+
+In the past, when users want to analyze or retrieve these science data, they had to leverage various custom-built tools. Using OODT that provides transparent access to distributed resources, functionality for data discovery and query optimization, as well as distributed processing and virtual archives; JPL data systems can handle data from various sources in a uniform way.
+
+In this talk, we will describe our experience over the past several years in leveraging and deploying OODT in our science data systems. We will outline the software engineering challenges that we faced, addressed, and along the way using OODT. We will describe several large-scale deployments of OODT, and the manner in which OODT helped us to address the data discovery and access challenges. We will also relate the lessons we have learned drawing from our experience.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2ZDlsIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6d9l'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q30c1n</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Using JMeter For Testing A Data Center</title><summary type='html'>When: Fri Nov 11, 2011 9:30pm to 10:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Fri Nov 11, 2011 9:30pm to 10:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: This presentation gives you first-hand information how JMeter was used for testing web applications and web services at a large-scale data center consisting of altogether 300 applications servers and multiple database clusters. At the beginning JMeter and the testing approach is introduced before tackling the hard problems of setting up a scalable performance test infrastructure consisting of JMeter, Ant, Hudson and Git. During the course of the project a new reporting backend for JMeter was developed overcoming the limitations of the current XSLT approach because a SLA (Service Level Agreement) performance report was required based on huge JMeter result files (e.g. exceeding 2 gigabytes).</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cTMwYzFuIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68q30c1n'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8dhj</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>The Secret Life of Open Source</title><summary type='html'>When: Thu Nov 10, 2011 6pm to 6:50pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 6pm to 6:50pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Apache, GNU, Mozilla, Ubuntu, PHP, LibreOffice, Wikipedia -- Today, there are hundreds of open source groups, each with its own culture, methodology, and governance model.
+
+
+* How are these groups alike?
+
+* How are they different?
+
+* Is there one true path to open source enlightenment, or do many paths converge around a common singularity?
+
+Join open source insider Ted Husted as we look behind the curtain to see who&amp;#39;s pulling strings that steer your favorite open source projects.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4ZGhqIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8dhj'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6cpj</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>The Power of the mod_proxy Modules</title><summary type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon E
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon E
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: This presentation reviews the concepts of web proxies and load balancing, covers the creation and maintenance of proxies (forward and reverse) for HTTP, HTTPS and FTP using Apache and mod_proxy and how mod_proxy_balancer can be used to provide a basic load balancing solution. Configuration Examples of implementing proxies and load balancer will be discussed including; how and when mod_proxy modules can help, configuring mod_proxy for forward or reverse proxy and configuring mod_proxy_balancer for one or more backend web servers.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2Y3BqIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6cpj'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68p3cdph</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>The Past, Present and Future of NOSQL</title><summary type='html'>When: Thu Nov 10, 2011 6pm to 6:50pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 6pm to 6:50pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Ok, it seems like everywhere we look there&amp;#39;s talk about next-gen databases.
+Under the rallying cry of &amp;quot;NOSQL,&amp;quot; several close-kept secret databases have
+gone open-source recently, giving everyone many exciting and confusing new
+opportunities. Some perform like crazy, some scale out to football field
+size, some just keep going no matter what, and none of them look like the
+SQL database we all grew up with.
+
+In this session, Emil Eifrem will take you on a whirlwind tour of the
+current NOSQL landscape. He&amp;#39;ll give a crash course overview of the four main
+categories of NOSQL databases, discuss what&amp;#39;s currently lacking in NOSQL
+today and where it needs to go to gain real mainstream adoption.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY4cDNjZHBoIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_68p3cdph'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj0dpi</id><published>2011-10-31T19:39:06.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>The other Apache technologies your big data solution needs</title><summary type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: You&amp;#39;ve gone to the talks on Hadoop / SOLR / NoSQL / etc, and now you&amp;#39;re ready to start building your own solution on top of that! What you might not realise is that you may end up reinventing some bits of the wheel whilst building your system..
+
+In this talk we&amp;#39;ll take a whistle-stop tour through a number of the projects from the Apache Software Foundation, that aren&amp;#39;t &amp;quot;big data&amp;quot; projects, but which could prove very helpful to you in building your big data solution. Knowing about these projects should help you build a better big data solution, and build it faster!</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2owZHBpIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj0dpi'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8e1o</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Talking people into creating patches</title><summary type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: &amp;quot;Contributing to open source projects is trivial: Make a change, create a patch, review and revise, have it accepted.&amp;quot; When heavily involved with open source projects it&amp;#39;s easy to forget what developers interested in contributing have to learn before even making the smallest first change.
+
+The talk summarises some of the issues and questions students, long time developers, researchers have when faced with free software development. The talk mainly focuses on the technical issues, touching only briefly the (at least) equally large space of cultural differences of open development communities vs. corporate or even research environments.
+
+Instead of providing pre-baked solutions to filling this gap the goal of the talk is to initiate a discussion on how to best talk your friends and colleagues into creating patches: Which strategies did work for you, which failed? Which resources do you generally use when mentoring interested peers? Where do you see most problems?</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4ZTFvIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8e1o'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6dpm</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Supercharging your Apache OODT deployments with the Process Control System</title><summary type='html'>When: Thu Nov 10, 2011 1am to 1:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon A
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 1am to 1:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon A
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: With the advent of OODT-139 and with recent work to build REST-ful services for the Apache OODT Catalog and Archive Service (CAS) components, users now have the capability to rapidly monitor their OODT deployments and their collective health, along with perform multi-component downstream analysis, including file pedigree tracking and provenance.
+
+This discussion will outline the importance and unique user capabilities afforded by the Process Control System (PCS) core package, along with the PCS REST services work undertaken in OODT-139. Real world Apache OODT deployments in the area of Regional Climate Modeling, Decision Support for Snow Data, Radioastronomy and in Biomedicine will be discussed, and the use of PCS will be described in an end-to-end example.
+
+This session should be applicable for folks with a basic understand of the Apache OODT CAS components and should show how to rapidly take advantage of the exciting new PCS features making their way into Apache OODT 0.3.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2ZHBtIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6dpm'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d1m</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Solr Power FTW: Powering NoSQL the World Over</title><summary type='html'>When: Thu Nov 10, 2011 1am to 1:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 1am to 1:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Solr is an open source, Lucene based search platform originally developed by CNET and used by the likes of Netflix, Yelp, and StubHub which has been rapidly growing in popularity and features during the last few years. Learn how Solr can be used as a Not Only SQL (NoSQL) database along the lines of Cassandra, Memcached, and Redis. NoSQL data stores are regularly described as non-relational, distributed, internet-scalable and are used at both Facebook and Digg. This presentation will quickly cover the fundamentals of NoSQL data stores, the basics of Lucene, and what Solr brings to the table. Following that we will dive into the technical details of making Solr your primary query engine on large scale web applications, thus relegating your traditional relational database to little more than a simple key store. Real solutions to problems like handling four billion requests per month will be presented. We&amp;#39;ll talk about sizing and configuring the Solr instances to maintain rapid response times under heavy load. We&amp;#39;ll show you how to change the schema on a live system with tens of millions of documents indexed while supporting real-time results. And finally, we&amp;#39;ll answer your questions about ways to work around the lack of transactions in Solr and how you can do all of this in a highly available solution.
+
+Questions to be answered:
+1.Why should I use Solr to relieve load from my relational database?
+2.How is Solr better than the alternative NoSQL solutions already in place?
+3.How do I address the pitfalls of working with Solr in large scale applications?
+4.What things would be more difficult in Solr than if I had stuck with my relational database?
+5.Is Solr a complete and competitive NoSQL datastore?</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4ZDFtIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d1m'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d9j</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Solr Flair</title><summary type='html'>When: Thu Nov 10, 2011 12am to 12:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 12am to 12:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Show off the power of Apache Solr with state of the art user interfaces and interactions.  Solr Flair demonstrates live systems leveraging Ajax suggest, ���instant��� search and preview, did you mean?, spell checking, faceting, filtering, grouping, and clustering. We���ll see how to generate charts, maps, and timelines from Solr indexed data. Each example will be presented with the complete code, configuration, and user interface elements.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4ZDlqIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d9j'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8cpl</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Security Problems (and Solutions) for Service Oriented Applications</title><summary type='html'>When: Fri Nov 11, 2011 1am to 1:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon A
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Fri Nov 11, 2011 1am to 1:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon A
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: One important aspect of Service Oriented Architecture that is often challenging to address and implement is Security.   Providing robust and scalable security solutions throughout highly distributed applications is a difficult problem to solve.   For traditional WebServices, standards like WS-Security, WS-Trust, WS-SecureConversation, and WS-SecurityPolicy have emerged to ease some of those problems.   However, those standards don&amp;#39;t always provide the best solutions for modern distributed applications that may include REST based services in addition to traditional SOAP based applications. 
+
+This session will cover various options for providing security to your services and will demonstrate how Apache projects such as CXF, WSS4J, Camel, and Karaf can work together to provide a complete security solution.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4Y3BsIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8cpl'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6d1l</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Scaling Hadoop Applications</title><summary type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon B
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon B
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Apache Hadoop makes it extremely easy to develop parallel programs based on MapReduce programming paradigm by taking care of work decomposition, distribution, assignment, communication, monitoring, and handling intermittent failures. However, developing Hadoop applications that linearly scale to hundreds, or even thousands of nodes, requires extensive understanding of Hadoop architecture and internals, in addition to hundreds of tunable configuration parameters. In this talk, I illustrate common techniques for building scalable Hadoop applications, and pitfalls to avoid. I will explain the seven major causes of sublinear scalability of parallel programs in the context of Hadoop, with real-world examples based on my experiences with hundreds of production applications at Yahoo! and elsewhere. I will conclude with a scalability checklist for Hadoop applications, and a methodical approach to identify and eliminate scalability bottlenecks.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o2ZDFsIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj6d1l'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64s36e1g</id><published>2011-10-31T19:39:06.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Out and About with Apache Traffic Server</title><summary type='html'>When: Fri Nov 11, 2011 1am to 1:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon E
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Fri Nov 11, 2011 1am to 1:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon E
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Apache Traffic Server is an ASF Open Source project implementing a fast, scalable and feature rich HTTP proxy and caching server. We will examine the technical details behind TS, what it is good for, and how you can configure it to accelerate your web traffic, and make complex problems easier to solve. Traffic Server was originally a commercial product from Inktomi corporation, and has been actively used inside Yahoo! for many years, as well as by many other large web sites. As of 2009, Traffic Server is an Open Source project under the Apache umbrella, and is rapidly being developed and improved on by an active community. The community is vibrant, with well over 150 active users, contributors and committers.
+
+This talk will explain the details behind the Traffic Server technology; What makes it fast? Why is it scalable? And how is it different compared to other HTTP proxy servers? We will discuss several use cases, and show how to configure and operate TS for common tasks. Being an HTTP proxy server and cache, there are many use cases, in the areas of forward, reverse and transparent proxying.
+
+Traffic Server is designed using a hybrid processing model, combining an event driven engine (state machine), with a multi-threaded process approach. This allows Traffic Server to scale on modern multi-core systems, taking advantage of available CPUs. From our perspective, we&amp;#39;ve combined the best features traditionally used, solving many difficult problems and at the same time we avoid running into some of the pitfalls associated with existing solutions. This approach gives us
+
+ * Scalability on SMP
+ * Predictable and low latency characteristics
+ * Lightweight on system resources (few threads, little memory wasted)
+ * Efficient and reliable disk I/O
+
+After introducing the technical details behind TS, we will discuss the common applications of a proxy and cache, when and why they would be applicable, and how to configure and use Apache Traffic Server effectively. Focusing on how to use Traffic Server in a production environment, we&amp;#39;ll walk the audience through
+
+* Installation process
+* Configuration files
+* Operations and monitoring
+
+The goal is to give a solid foundation of web proxying and caching, and why Apache Traffic Server is a contender in this space. No previous experience with Apache Traffic Server is necessary, but familiarity in the general areas of HTTP and HTTP servers is beneficial to follow the presentation.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0czM2ZTFnIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64s36e1g'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d9h</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Opening Sourcing Commercial Software - Apache Traffic Server</title><summary type='html'>When: Wed Nov 9, 2011 10:30pm to 11:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Wed Nov 9, 2011 10:30pm to 11:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: When a company decides to open source software there are a lot of details to consider.  There are security concerns, software license issues, patent ownership issues, trade mark ownership, existing software contracts, and possibility meeting the requirements of organizations like the Apache Foundation.
+
+I will talk about how we handled each of these issues when open sourcing Traffic Server and why we chose to open source our code with the Apache Foundation.  I will talk about the pros and cons of open sourcing and as a company what we did well and didn&amp;#39;t do well.
+
+Open sourcing was beneficial to the Traffic Server project.  As a company it is important to know how to help a foster a community and benefit from the open source development process.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4ZDloIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8d9h'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8c9l</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Open Source enables Open Innovation</title><summary type='html'>When: Thu Nov 10, 2011 12am to 12:50am&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 12am to 12:50am 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Open source is more than just a licence, it is also a software development methodology that allows companies to share resources and collaborate on critical parts of their software/service offerings.
+Open innovation means combining internal and external ideas, and internal and external paths to market, to advance a company&amp;#39;s technology.
+The parallels should be obvious, yet people don&amp;#39;t always think as open source as an enabler for open innovation. Open source, if done right, brings many external eyeballs and fast feedback to the software development process.
+We will show how those eyeballs and feedback can make a huge difference in a company&amp;#39;s potential for innovation, and as a result provide compelling arguments for moving large parts of your software development efforts to open source, as Day Software (now part of Adobe) started doing a few years ago.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4YzlsIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8c9l'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8c1n</id><published>2011-10-31T19:39:07.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>Navigating the Apache Incubator</title><summary type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon C
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 10:30pm to 11:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon C
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Looking to bring an open source project to the Apache Software Foundation? Already a member of a podling? Looking to get involved?
+
+Inspired by the popular Q&amp;amp;A session at BarCampApache Sydney, this session will walk through all aspects of navigating the Apache Incubator, including:
+ * bringing a project to Apache
+ * is Apache the right home for a project?
+ * the Incubator&amp;#39;s procedures and requirements 
+ * when and how to graduate
+ * what makes a successful Apache project
+ * examples of successful and less successful podlings</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0c2o4YzFuIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64sj8c1n'/><author><name>http://na11.apachecon.com/ical/</name></author></entry><entry><id>http://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64s3achn</id><published>2011-10-31T19:39:06.000Z</published><updated>2011-11-01T02:39:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='html'>mod_lua for beginners</title><summary type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm&amp;nbsp;
+UTC&lt;br&gt;
+
+&lt;br&gt;Where: Salon E
+&lt;br&gt;Event Status: confirmed</summary><content type='html'>When: Thu Nov 10, 2011 7:30pm to 8:20pm 
+UTC&lt;br /&gt;
+
+&lt;br /&gt;Where: Salon E
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: I will present a beginners guide to using the Lua scripting language inside of Apache HTTP Server, a new mod_perl-like module that will accompany the release of Apache HTTP Server 2.4.</content><link rel='alternate' type='text/html' href='https://www.google.com/calendar/event?eid=XzY0czNhY2huIHVra2xmaGoycmZyMzA5YXRxMjJnZ2pjbnMzOGc5Y21mQGk' title='alternate'/><link rel='self' type='application/atom+xml' href='https://www.google.com/calendar/feeds/ukklfhj2rfr309atq22ggjcns38g9cmf%40import.calendar.google.com/public/basic/_64s3achn'/><author><name>http://na11.apachecon.com/ical/</name></author></entry></feed>

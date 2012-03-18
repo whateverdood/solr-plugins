@@ -520,7 +520,7 @@
    <field name="media-type" type="string" indexed="true" stored="false" />
    <field name="body" type="text_general" indexed="true" stored="false" termVectors="true" termPositions="true" termOffsets="true" />
    <field name="uri" type="string" indexed="true" stored="true" />
-   <field name="raw-content" type="string" indexed="false" stored="true" />
+   <field name="raw-content" type="binary" indexed="false" stored="true" />
    <field name="likes" type="pint" indexed="true" stored="true" />
 
    <!-- catchall field, containing all other searchable text fields (implemented

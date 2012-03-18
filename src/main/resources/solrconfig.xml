@@ -1511,25 +1511,33 @@
        http://wiki.apache.org/solr/UpdateRequestProcessor
 
     --> 
-    
+
+  <!-- Is this necessary? -->    
+  <requestHandler name="/update/doc" class="solr.XmlUpdateRequestHandler">
+    <lst name="defaults">
+      <str name="update.chain">docHandler</str>
+    </lst>
+  </requestHandler>
+  
   <updateRequestProcessorChain name="docHandler">
     <processor class="solr.DistributedUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" />
     <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
-    <processor class="sandboxes.solrplugins.MergingUpdateProcessorFactory" />
     <processor class="solr.RunUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />
   </updateRequestProcessorChain>
   
+ <!-- 
+ TODO: need a LoadDocFromIndexUpdateRequestProcessor 
   <updateRequestProcessorChain name="likeHandler">
     <processor class="solr.DistributedUpdateProcessorFactory" />
-    <!-- TODO: need a LoadDocFromIndexUpdateRequestProcessor -->
     <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
-    <processor class="sandboxes.solrplugins.MergingUpdateProcessorFactory" />
+    <processor class="sandboxes.solrplugins.GroovusMergingUpdateProcessorFactory" />
     <processor class="solr.RunUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />  
   </updateRequestProcessorChain>
-    
+  -->
+  
   <!-- Deduplication
 
        An example dedup update processor that creates the "id" field

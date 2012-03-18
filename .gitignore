@@ -3,3 +3,9 @@ target
 
 # don't push Eclipse generated stuff (ever)
 bin
+
+.settings/org.eclipse.ltk.core.refactoring.prefs
+
+.settings/com.springsource.sts.maven.prefs
+
+.gitignore
