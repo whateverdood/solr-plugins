@@ -56,9 +56,9 @@ public class ExtractingUpdateProcessorFactoryTest {
 		expected.put("media-type", "text/html");
 		expected.put("title", "This is a test HTML document");
 		expected.put("subject", "test solr lucene apache");
-		expected.put("body", "FIX ME RICH");
+		expected.put("body", "This is an important title Craft beer irony banksy whatever, wes anderson brunch readymade fixie.");
 		params.add(new Object[] { "file:src/test/resources/download-this.html",
-				"text/html", expected, 1900 });
+				"text/html", expected, 97 });
 
 		expected = new HashMap<String, String>();
 		expected.put("Content-Type",
@@ -107,7 +107,9 @@ public class ExtractingUpdateProcessorFactoryTest {
 
 				int bodySize = doc.getFieldValue("body") == null ? 0 : doc
 						.getFieldValue("body").toString().length();
-				assertTrue("Body size was less than what was expected.",
+				assertTrue("Body size [" + bodySize + 
+						"] was less than what was expected [" + 
+						expectedBodySize + "]",
 						expectedBodySize <= bodySize);
 
 				return null;
