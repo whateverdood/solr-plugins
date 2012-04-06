@@ -16,10 +16,10 @@ import com.sun.syndication.io.SyndFeedInput;
 
 public class Feeder {
 
-    private String solrServerUrl;
-    private int commitWithinMsecs;
-    private SolrServer solrCluster;
-    private boolean noIndex;
+    protected String solrServerUrl;
+    protected int commitWithinMsecs;
+    protected SolrServer solrCluster;
+    protected boolean noIndex;
 
     public void setSolrServerUrl(String solrUrl) throws Exception {
         this.solrServerUrl = solrUrl;

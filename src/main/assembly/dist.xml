@@ -16,12 +16,19 @@
     <formats>
         <format>zip</format>
     </formats>
-    <baseDirectory>solr</baseDirectory>
-    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>.</baseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
             <directory>src/main/resources</directory>
-            <outputDirectory>conf</outputDirectory>
+            <outputDirectory>solr/conf</outputDirectory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/webapp</directory>
+            <outputDirectory>webapps/solrplugins</outputDirectory>
             <includes>
                 <include>*</include>
             </includes>
@@ -29,7 +36,7 @@
     </fileSets>
     <dependencySets>
         <dependencySet>
-            <outputDirectory>lib</outputDirectory>
+            <outputDirectory>solr/lib</outputDirectory>
             <useProjectArtifact>true</useProjectArtifact>
             <unpack>false</unpack>
             <scope>runtime</scope>
@@ -40,6 +47,13 @@
                 <exclude>log4j:log4j</exclude>
                 <exclude>slf4j:slf4j-*</exclude>
             </excludes>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>webapps/solrplugins/WEB-INF/lib</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+            <useDefaultExcludes>true</useDefaultExcludes>
         </dependencySet>
     </dependencySets>
 </assembly>

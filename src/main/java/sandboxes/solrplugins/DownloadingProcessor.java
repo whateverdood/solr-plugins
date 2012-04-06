@@ -18,11 +18,9 @@ import org.apache.tika.parser.txt.CharsetDetector;
 
 public class DownloadingProcessor extends UpdateRequestProcessor {
 
-	private static final Logger LOG = Logger
-			.getLogger(DownloadingProcessor.class);
+	private static final Logger LOG = Logger.getLogger(DownloadingProcessor.class);
 	
 	private Detector detector = new DefaultDetector();
-	
 
 	public DownloadingProcessor(UpdateRequestProcessor next) {
 		super(next);
