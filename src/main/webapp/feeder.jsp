@@ -42,8 +42,8 @@ if (!StringUtils.isEmpty(url)) {
             text-align: center;
         }
         .flash {
-            background-color: lightyellow;
-            border: 1px solid orange;
+            background-color: aliceblue;
+            border: 1px solid lightblue;
             padding: 0.2em;
         }
         .help {
