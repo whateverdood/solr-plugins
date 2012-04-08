@@ -1,22 +1,35 @@
 _______________________________________________________________________________
 solr-plugins README
 
-Welcome to solr-plugins, a sandbox for writing custom SOLR components, such as:
+Welcome to solr-plugins, a sandbox for writing a custom SOLR update request
+processor chain (currently named "docHandler"). Other custom/plugin stuff might 
+be added in the future, like:
 
-    - UpdateRequestProcessors
     - SearchComponents
     - ParserPlugins
-    - and other stuff
+    - ...
     
-This project is built using Maven 3. It also includes Eclipse .project and 
+The "docHandler" chain performs the following steps:
+    
+    1. Pick a shard (via the cloud distributed indexing hooks);
+    2. Download the content of some internet resource <- CUSTOM;
+    3. Extract the text of the resource plus meta-data if possible <- CUSTOM;
+    4. Update the index;
+    5. Log the update.
+
+Steps 2 and 3 are custom UpdateRequestProcessors. This project contains the 
+source code and unit-tests for them. 
+
+solr-plugins is built using Maven 3. It also includes Eclipse .project and 
 .classpath files as well as some .settings if you're interested. Tested with
-the SOLR 4 nightly builds.
+a SOLR 4 nightly build.
 
 _______________________________________________________________________________
 Before you build
 
 1. Install Maven 3
-2. Install ${solr-plugins}/lib/shawty-0.9.3.jar into your local maven repo:
+2. Install ${solr-plugins}/lib/shawty-0.9.3.jar (http://code.google.com/p/shawty/) 
+into your local maven repo:
 
 $ mvn install:install-file -Dfile=lib/shawty-0.9.3.jar -DgroupId=com.googlecode \
     -DartifactId=shawty -Dversion=0.9.3 -Dpackaging=jar
@@ -36,4 +49,9 @@ Assuming you've gotten this project to build and produce the target zip,
     $ cp -r example solr-plugin-example
     $ cd solr-plugin-example
     $ unzip /path/to/solr-plugins/target/solr-plugins-0.0.1-SNAPSHOT-with-dependencies.zip
-3. Blah blah finish this...
+3. Start SOLR:
+    $ java -jar start.jar
+4. Visit http://0.0.0.0:8983/solrplugins/feeder.jsp to index some resources
+referenced by an ATOM or RSS feed. You should be able to see documents being 
+downloaded, extracted, and indexed.
+5. Search for some documents http://0.0.0.0:8983/solr/select?q=*&fl=id,title,uri
