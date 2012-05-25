@@ -9,16 +9,33 @@ be added in the future, like:
     - ParserPlugins
     - ...
     
-The "docHandler" chain performs the following steps:
+The "docHandler" chain is defined in the bundled solrconfig.xml as:
+
+-snip-
+   <updateRequestProcessorChain name="docHandler">
+    <processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" />
+    <processor class="solr.DistributedUpdateProcessorFactory" />
+    <processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+    <processor class="solr.LogUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+-snip-
+
+...and performs the following steps:
     
-    1. Pick a shard (via the cloud distributed indexing hooks);
-    2. Download the content of some internet resource <- CUSTOM;
-    3. Extract the text of the resource plus meta-data if possible <- CUSTOM;
-    4. Update the index;
+    1. Download the content of some URI. <- CUSTOM
+    2. Pick a shard (via the cloud distributed indexing hooks). This might
+       forward the SolrInputDoc to a different shard if the current one isn't
+       the leader.
+    3. Extract the text of the resource plus meta-data if possible <- CUSTOM
+    4. Update the index.
     5. Log the update.
 
-Steps 2 and 3 are custom UpdateRequestProcessors. This project contains the 
-source code and unit-tests for them. 
+Steps 1 and 3 are custom UpdateRequestProcessors. This project contains the 
+source code and unit-tests for them. Note the downloading happens prior to the
+SolrCloud distribution logic. This is so each document is downloaded just once
+by the cluster. If the doc was distributed before downloading, each replica 
+would download unnecessarily. 
 
 solr-plugins is built using Maven 3. It also includes Eclipse .project and 
 .classpath files as well as some .settings if you're interested. Tested with
@@ -31,12 +48,12 @@ Before you build
 2. Install ${solr-plugins}/lib/shawty-0.9.3.jar (http://code.google.com/p/shawty/) 
 into your local maven repo:
 
-$ mvn install:install-file -Dfile=lib/shawty-0.9.3.jar -DgroupId=com.googlecode \
-    -DartifactId=shawty -Dversion=0.9.3 -Dpackaging=jar
+    $ mvn install:install-file -Dfile=lib/shawty-0.9.3.jar -DgroupId=com.googlecode \
+        -DartifactId=shawty -Dversion=0.9.3 -Dpackaging=jar
 
 You should be ready to build:
 
-$ mvn clean package
+    $ mvn clean package
 
 _______________________________________________________________________________
 Installing the example
@@ -50,8 +67,8 @@ Assuming you've gotten this project to build and produce the target zip,
     $ cd solr-plugin-example
     $ unzip /path/to/solr-plugins/target/solr-plugins-0.0.1-SNAPSHOT-with-dependencies.zip
 3. Start SOLR:
-    $ java -jar start.jar
+    $ java -jar start.jar OPTIONS=All # run Jetty with JSP support
 4. Visit http://0.0.0.0:8983/solrplugins/feeder.jsp to index some resources
 referenced by an ATOM or RSS feed. You should be able to see documents being 
 downloaded, extracted, and indexed.
-5. Search for some documents http://0.0.0.0:8983/solr/select?q=*&fl=id,title,uri
+5. Search for some documents http://0.0.0.0:8983/solr/select?fl=title,uri&q=*

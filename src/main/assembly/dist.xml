@@ -33,6 +33,13 @@
                 <include>*</include>
             </includes>
         </fileSet>
+        <fileSet>
+            <directory>lib</directory>
+            <outputDirectory>lib/jsp</outputDirectory>
+            <includes>
+                <include>jsp/*</include>
+            </includes>
+        </fileSet>
     </fileSets>
     <dependencySets>
         <dependencySet>
