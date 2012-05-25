@@ -1,0 +1,119 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Solr-plugins</title>
+  <meta name="description" content="Sandbox for custom Solr UpdateRequestProcessors, parser plugins, etc.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Solr-plugins</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Sandbox for custom Solr UpdateRequestProcessors, parser plugins, etc.</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/whateverdood/solr-plugins/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/whateverdood/solr-plugins/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/whateverdood/solr-plugins" class="code">View Solr-plugins on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <hr><h1>solr-plugins</h1>
+
+<p>Welcome to solr-plugins, a sandbox for writing a custom Solr update request processor chain (currently named "docHandler"). Other custom/plugin stuff might be added in the future, like:</p>
+
+<ul>
+<li>SearchComponents</li>
+<li>ParserPlugins</li>
+<li>...more?</li>
+</ul><p>The "docHandler" chain is defined in the bundled solrconfig.xml as:</p>
+
+<pre><code>&lt;updateRequestProcessorChain name="docHandler"&gt;
+    &lt;processor class="sandboxes.solrplugins.DownloadingUpdateProcessorFactory" /&gt;
+    &lt;processor class="solr.DistributedUpdateProcessorFactory" /&gt;
+    &lt;processor class="sandboxes.solrplugins.ExtractingUpdateProcessorFactory" /&gt;
+    &lt;processor class="solr.RunUpdateProcessorFactory" /&gt;
+    &lt;processor class="solr.LogUpdateProcessorFactory" /&gt;
+&lt;/updateRequestProcessorChain&gt;
+</code></pre>
+
+<p>...and performs the following steps:</p>
+
+<ol>
+<li>Download the content of some URI. &lt;- CUSTOM</li>
+<li>Pick a shard (via the cloud distributed indexing hooks). This might forward the SolrInputDoc to a different shard if the current one isn't the leader.</li>
+<li>Extract the text of the resource plus meta-data if possible &lt;- CUSTOM</li>
+<li>Update the index.</li>
+<li>Log the update.</li>
+</ol><p>Steps 1 and 3 are custom UpdateRequestProcessors. This project contains the source code and unit-tests for them. Note the downloading happens prior to the SolrCloud distribution logic. This is so each document is downloaded just once by the cluster. If the doc was distributed before downloading, each replica would download unnecessarily. </p>
+
+<p>solr-plugins is built using Maven 3. It also includes Eclipse .project and .classpath files as well as some .settings if you're interested. Periodically tested with SOLR 4 nightly builds.</p>
+
+<hr><h2>Before you build</h2>
+
+<p>Install Maven 3, then install ${solr-plugins}/lib/shawty-0.9.3.jar (<a href="http://code.google.com/p/shawty/">http://code.google.com/p/shawty/</a>) into your local maven repository:</p>
+
+<pre><code>$ mvn install:install-file -Dfile=lib/shawty-0.9.3.jar -DgroupId=com.googlecode \
+    -DartifactId=shawty -Dversion=0.9.3 -Dpackaging=jar
+</code></pre>
+
+<p>You should be ready to build:</p>
+
+<pre><code>$ mvn clean package
+</code></pre>
+
+<hr><h2>Installing the example</h2>
+
+<p>Assuming you've gotten this project to build and produce the target zip, install a Solr 4 nightly trunk build (<a href="http://wiki.apache.org/solr/NightlyBuilds">http://wiki.apache.org/solr/NightlyBuilds</a>). Make a copy of the Solr 4 example:</p>
+
+<pre><code>$ cd /path/to/solr-4
+$ cp -r example solr-plugin-example
+$ cd solr-plugin-example
+$ unzip /path/to/solr-plugins/target/solr-plugins-0.0.1-SNAPSHOT-with-dependencies.zip
+</code></pre>
+
+<p>Start Solr:</p>
+
+<pre><code>$ java -jar start.jar OPTIONS=All
+</code></pre>
+
+<p><a href="http://0.0.0.0:8983/solrplugins/feeder.jsp">Visit this page</a> to index some resources referenced by an ATOM or RSS feed. You should be able to see documents being downloaded, extracted, and indexed. Next, <a href="http://0.0.0.0:8983/solr/select?fl=title,uri&amp;q=*">search</a> for some documents and have fun!</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/whateverdood" class="avatar"><img src="https://secure.gravatar.com/avatar/2d323011dcee42b906a3ec78f66741ea?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/whateverdood">whateverdood</a> maintains <a href="https://github.com/whateverdood/solr-plugins">Solr-plugins</a></p>
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/whateverdood/solr-plugins/tarball/master" class="tar">tar</a><a href="https://github.com/whateverdood/solr-plugins/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
