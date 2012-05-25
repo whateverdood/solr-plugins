@@ -12,6 +12,8 @@ public class DownloadingUpdateProcessorFactory extends
 
 	private static final Logger LOG = Logger
 			.getLogger(DownloadingUpdateProcessorFactory.class);
+	
+	boolean useJdkHttpClient = false;
 
 	public DownloadingUpdateProcessorFactory() {
 		// Do nothing.
@@ -20,12 +22,21 @@ public class DownloadingUpdateProcessorFactory extends
 	@Override
 	public void init(@SuppressWarnings("rawtypes") NamedList args) {
 		super.init(args);
+		Object jdkHttp = args.get("useJdkHttpClient");
+		if (jdkHttp != null) {
+		    useJdkHttpClient = Boolean.valueOf(jdkHttp.toString());
+		    if (useJdkHttpClient) {
+		        LOG.warn("Using the JDK HTTP client stack.");
+		    }
+		}
 		LOG.info("Initialized.");
 	}
 
 	@Override
 	public UpdateRequestProcessor getInstance(SolrQueryRequest req,
 			SolrQueryResponse resp, UpdateRequestProcessor np) {
-		return new DownloadingProcessor(np);
+		DownloadingProcessor downloadingProcessor = new DownloadingProcessor(np);
+		downloadingProcessor.useJdkHttpClient = useJdkHttpClient;
+        return downloadingProcessor;
 	}
 }

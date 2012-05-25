@@ -6,6 +6,10 @@ import java.net.URL;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.log4j.Logger;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
@@ -22,6 +26,10 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 	
 	private Detector detector = new DefaultDetector();
 
+    boolean useJdkHttpClient = false;
+    
+    static DefaultHttpClient httpClient = new DefaultHttpClient();
+    
 	public DownloadingProcessor(UpdateRequestProcessor next) {
 		super(next);
 	}
@@ -54,7 +62,17 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
     }
 
     byte[] download(URL url) throws IOException {
-		return IOUtils.toByteArray(url.openStream());
+        if (useJdkHttpClient) {
+            return IOUtils.toByteArray(url.openStream());
+        } else {
+            HttpGet get = new HttpGet(url.toString());
+            HttpResponse response = httpClient.execute(get);
+            if (200 == response.getStatusLine().getStatusCode()) {
+                HttpEntity entityBody = response.getEntity();
+                return IOUtils.toByteArray(entityBody.getContent());
+            }
+            throw new IOException(response.getStatusLine().toString());            
+        }
 	}
 	
 	String detectContentType(byte[] bytes) throws IOException{

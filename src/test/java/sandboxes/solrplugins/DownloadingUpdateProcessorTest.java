@@ -52,6 +52,7 @@ public class DownloadingUpdateProcessorTest {
         DownloadingProcessor dldr = 
             (DownloadingProcessor) new DownloadingUpdateProcessorFactory().getInstance(
 		    request, response, nextStep);
+        dldr.useJdkHttpClient = true;
         
         AddUpdateCommand dldrCmd = when(mock(AddUpdateCommand.class).getSolrInputDocument()).thenReturn(doc).getMock();
         dldr.processAdd(dldrCmd);
@@ -64,6 +65,7 @@ public class DownloadingUpdateProcessorTest {
         DownloadingProcessor dldr = 
             (DownloadingProcessor) new DownloadingUpdateProcessorFactory().getInstance(
 		    request, response, nextStep);
+        dldr.useJdkHttpClient = true;
         
         assertEquals("text/html", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.html"))));
         assertEquals("application/pdf", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.pdf"))));
