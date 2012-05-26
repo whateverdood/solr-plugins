@@ -54,10 +54,10 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		} catch (Exception e) {
 		    throw new IOException(e);
 		}
-
-		if (LOG.isLoggable(Level.FINE))
-		    LOG.fine("Extracted: " + doc.toString());
 		
+		LOG.info("Extracted [" + doc.keySet() + "] from [" +
+		    doc.getFieldValue("uri") + "].");
+
 		super.next.processAdd(cmd);
 	}
 
@@ -74,6 +74,10 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		} else {
 			extractGenericContent(doc);
 		}
+
+		if (LOG.isLoggable(Level.FINEST))
+            LOG.finest("Extracted [" + doc + "] from [" + 
+                doc.getFieldValue("raw-content") + "]");
 	}
 
     @SuppressWarnings("unchecked")
@@ -81,12 +85,16 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 	    throws Exception {
 	    
 		byte[] bytes = toByteArray(doc.getFieldValue("raw-content"));
+		String document = new String(bytes, 
+		    DownloadingProcessor.detectEncoding(bytes));
+		
 		List<Map<String, ?>> extracted = extractor.extract(
-		    new String(bytes, DownloadingProcessor.detectEncoding(bytes)));
-
+		    document);
+        
 		if (!extracted.isEmpty()) {
 			// we'll just use the first extract we find
 			Map<String, ?> extract = extracted.get(0);
+
 			for (String key : extract.keySet()) {
 				doc.setField(key, extract.get(key));
 			}

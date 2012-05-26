@@ -2,6 +2,7 @@ package sandboxes.solrplugins;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.codec.binary.Base64;
@@ -11,7 +12,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
@@ -41,7 +41,8 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 		String uri = (String) doc.getFieldValue("uri");
 		
 		if (StringUtils.isEmpty(uri)) {
-			throw new IllegalArgumentException("No \"uri\" field set - nothing to do.");
+			throw new IllegalArgumentException(
+			    "No \"uri\" field set - nothing to do.");
 		}
 		
 		byte[] rawContent = download(new URL(uri));
@@ -51,7 +52,8 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 		doc.setField("raw-content", Base64.encodeBase64String(rawContent));
         doc.setField("media-type", contentType);
 
-		LOG.info("Downloaded [" + doc.getFieldValue("raw-content").toString().length() + 
+		LOG.info("Downloaded [" + 
+		    doc.getFieldValue("raw-content").toString().length() + 
 		    "] bytes of [" + contentType + "] from [" + uri + "].");
 
 		super.next.processAdd(cmd);
@@ -64,6 +66,9 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
     }
 
     byte[] download(URL url) throws IOException {
+        if (LOG.isLoggable(Level.FINE))
+            LOG.fine("Trying to download [" + url + "]");
+        
         if (useJdkHttpClient) {
             return IOUtils.toByteArray(url.openStream());
         } else {
@@ -73,7 +78,8 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
                 HttpEntity entityBody = response.getEntity();
                 return IOUtils.toByteArray(entityBody.getContent());
             }
-            throw new IOException(response.getStatusLine().toString());            
+            throw new IOException("Couldn't download [" + url + "] <- " + 
+                response.getStatusLine().toString());            
         }
 	}
 	
