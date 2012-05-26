@@ -19,13 +19,7 @@
     <baseDirectory>.</baseDirectory>
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
-        <fileSet>
-            <directory>src/main/resources</directory>
-            <outputDirectory>solr/conf</outputDirectory>
-            <includes>
-                <include>*</include>
-            </includes>
-        </fileSet>
+        <!-- webapp for driving feeds into this -->
         <fileSet>
             <directory>src/main/webapp</directory>
             <outputDirectory>webapps/solrplugins</outputDirectory>
@@ -34,10 +28,10 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>lib</directory>
-            <outputDirectory>lib/jsp</outputDirectory>
+            <directory>src/main/resources</directory>
+            <outputDirectory>.</outputDirectory>
             <includes>
-                <include>jsp/*</include>
+                <include>**/*</include>
             </includes>
         </fileSet>
     </fileSets>

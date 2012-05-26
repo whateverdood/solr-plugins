@@ -2,6 +2,7 @@ package sandboxes.solrplugins;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
@@ -10,7 +11,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.log4j.Logger;
+
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
@@ -22,7 +23,8 @@ import org.apache.tika.parser.txt.CharsetDetector;
 
 public class DownloadingProcessor extends UpdateRequestProcessor {
 
-	private static final Logger LOG = Logger.getLogger(DownloadingProcessor.class);
+	private static final Logger LOG = Logger.getLogger(
+	    DownloadingProcessor.class.getName());
 	
 	private Detector detector = new DefaultDetector();
 

@@ -305,11 +305,11 @@
          openSearcher - if false, the commit causes recent index changes
          to be flushed to stable storage, but does not cause a new
          searcher to be opened to make those changes visible.
-      -->
      <autoCommit> 
        <maxTime>15000</maxTime> 
        <openSearcher>false</openSearcher> 
      </autoCommit>
+      -->
 
     <!-- softAutoCommit is like autoCommit except it causes a
          'soft' commit which only ensures that changes are visible
@@ -317,10 +317,10 @@
          faster and more near-realtime friendly than a hard commit.
       -->
      <!--
+      -->
        <autoSoftCommit> 
          <maxTime>1000</maxTime> 
        </autoSoftCommit>
-      -->
 
     <!-- Update Related Event Listeners
          
@@ -418,7 +418,7 @@
          be based on the last SolrCore to be initialized.
          
       -->
-    <maxBooleanClauses>1024</maxBooleanClauses>
+    <maxBooleanClauses>10240</maxBooleanClauses>
 
 
     <!-- Solr Internal Query Caches

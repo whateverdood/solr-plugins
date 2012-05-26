@@ -1,6 +1,8 @@
 package sandboxes.solrplugins;
 
-import org.apache.log4j.Logger;
+
+import java.util.logging.Logger;
+
 import org.apache.solr.common.util.NamedList;
 import org.apache.solr.request.SolrQueryRequest;
 import org.apache.solr.response.SolrQueryResponse;
@@ -11,7 +13,7 @@ public class ExtractingUpdateProcessorFactory extends
 		UpdateRequestProcessorFactory {
 
 	private static final Logger LOG = Logger
-			.getLogger(ExtractingUpdateProcessorFactory.class);
+			.getLogger(ExtractingUpdateProcessorFactory.class.getName());
 
 	public ExtractingUpdateProcessorFactory() {
 		// Do nothing.

@@ -3,8 +3,9 @@ package sandboxes.solrplugins.source;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.apache.log4j.Logger;
+
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 import org.apache.solr.client.solrj.request.UpdateRequest;
@@ -45,9 +46,9 @@ public class Feeder {
 
     private void indexDoc(SolrInputDocument doc) throws Exception {
         if (noIndex) {
-            Logger.getRootLogger().info("Not indexing: " + doc.toString());
+            Logger.getAnonymousLogger().info("Not indexing: " + doc.toString());
         } else {
-            Logger.getRootLogger().info("Indexing: " + doc.toString());
+            Logger.getAnonymousLogger().info("Indexing: " + doc.toString());
             UpdateRequest request = new UpdateRequest();
             request.setParam("update.chain", "docHandler");
             request.setCommitWithin(commitWithinMsecs);

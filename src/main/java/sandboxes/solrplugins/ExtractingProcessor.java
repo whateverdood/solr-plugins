@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.log4j.Logger;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
@@ -23,7 +24,7 @@ import com.googlecode.shawty.XPathExtractor;
 public class ExtractingProcessor extends UpdateRequestProcessor {
 
 	private static final Logger LOG = Logger
-			.getLogger(ExtractingProcessor.class);
+			.getLogger(ExtractingProcessor.class.getName());
 
 	private Parser parser;
 
@@ -45,7 +46,7 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 
 		if (doc.getFieldValue("raw-content") == null) {
 			throw new IllegalArgumentException(
-			    "Can't extract field from null raw-content");
+			    "Can't extract metadata fields from no raw-content");
 		}
 
 		try {
@@ -54,14 +55,18 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		    throw new IOException(e);
 		}
 
-		LOG.info("Extracted: " + doc.toString());
+		if (LOG.isLoggable(Level.FINE))
+		    LOG.fine("Extracted: " + doc.toString());
+		
 		super.next.processAdd(cmd);
 	}
 
 	void extractData(SolrInputDocument doc) throws Exception {
 		String mediaType = (String) doc.getFieldValue("media-type");
 		
-		LOG.info("Trying to extract content for type [" + mediaType + "]");
+		if (LOG.isLoggable(Level.FINE))
+		    LOG.fine("Trying to extract content for type [" + mediaType + "]");
+		
         XPathExtractor extractor = Extractors.getExtractor(mediaType);
 		
 		if (extractor != null) {
@@ -96,7 +101,7 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
         try {
             parser.parse(stream, handler, metadata, context);
         } catch (Exception ex) {
-            LOG.error("Unable to perform generic Tika extraction.", ex);
+            LOG.log(Level.SEVERE, "Unable to perform generic Tika extraction:", ex);
         } finally {
             stream.close();
         }

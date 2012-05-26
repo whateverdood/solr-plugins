@@ -1,6 +1,8 @@
 package sandboxes.solrplugins;
 
-import org.apache.log4j.Logger;
+
+import java.util.logging.Logger;
+
 import org.apache.solr.common.util.NamedList;
 import org.apache.solr.request.SolrQueryRequest;
 import org.apache.solr.response.SolrQueryResponse;
@@ -11,7 +13,7 @@ public class DownloadingUpdateProcessorFactory extends
 		UpdateRequestProcessorFactory {
 
 	private static final Logger LOG = Logger
-			.getLogger(DownloadingUpdateProcessorFactory.class);
+			.getLogger(DownloadingUpdateProcessorFactory.class.getName());
 	
 	boolean useJdkHttpClient = false;
 
@@ -26,7 +28,7 @@ public class DownloadingUpdateProcessorFactory extends
 		if (jdkHttp != null) {
 		    useJdkHttpClient = Boolean.valueOf(jdkHttp.toString());
 		    if (useJdkHttpClient) {
-		        LOG.warn("Using the JDK HTTP client stack.");
+		        LOG.warning("Using the JDK HTTP client stack.");
 		    }
 		}
 		LOG.info("Initialized.");
