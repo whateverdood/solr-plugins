@@ -64,14 +64,16 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 	void extractData(SolrInputDocument doc) throws Exception {
 		String mediaType = (String) doc.getFieldValue("media-type");
 		
-		if (LOG.isLoggable(Level.FINE))
-		    LOG.fine("Trying to extract content for type [" + mediaType + "]");
-		
         XPathExtractor extractor = Extractors.getExtractor(mediaType);
-		
+        		
 		if (extractor != null) {
+	        if (LOG.isLoggable(Level.FINE))
+	            LOG.fine("Using an XPathExtractor to extract content from [" + 
+	                mediaType + "]");
 			extractKnownContent(doc, extractor);
 		} else {
+	        if (LOG.isLoggable(Level.FINE))
+	            LOG.fine("Using Tika to extract content from [" + mediaType + "]");
 			extractGenericContent(doc);
 		}
 

@@ -11,11 +11,15 @@ import static org.mockito.Mockito.when;
 import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.solr.common.SolrInputDocument;
+import org.apache.solr.common.util.NamedList;
+import org.apache.solr.common.util.SimpleOrderedMap;
 import org.apache.solr.request.SolrQueryRequest;
 import org.apache.solr.response.SolrQueryResponse;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -25,6 +29,12 @@ import org.mockito.stubbing.Answer;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DownloadingUpdateProcessorTest {
+    
+    @Before
+    public void setUp() {
+        BasicConfigurator.resetConfiguration();
+        BasicConfigurator.configure();
+    }
 
 	@Mock
 	SolrQueryRequest request;
@@ -47,25 +57,18 @@ public class DownloadingUpdateProcessorTest {
                 return null;
             }
         }).when(nextStep).processAdd(any(AddUpdateCommand.class));
-        
 
-        DownloadingProcessor dldr = 
-            (DownloadingProcessor) new DownloadingUpdateProcessorFactory().getInstance(
-		    request, response, nextStep);
-        dldr.useJdkHttpClient = true;
+        DownloadingProcessor dldr = newDownloadingProcessor();
         
-        AddUpdateCommand dldrCmd = when(mock(AddUpdateCommand.class).getSolrInputDocument()).thenReturn(doc).getMock();
+        AddUpdateCommand dldrCmd = when(mock(AddUpdateCommand.class).getSolrInputDocument()).
+            thenReturn(doc).getMock();
         dldr.processAdd(dldrCmd);
     }
-	
 	
 	@Test
     public void detectsContent() throws Exception {
 		
-        DownloadingProcessor dldr = 
-            (DownloadingProcessor) new DownloadingUpdateProcessorFactory().getInstance(
-		    request, response, nextStep);
-        dldr.useJdkHttpClient = true;
+        DownloadingProcessor dldr = newDownloadingProcessor();
         
         assertEquals("text/html", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.html"))));
         assertEquals("application/pdf", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.pdf"))));
@@ -78,4 +81,15 @@ public class DownloadingUpdateProcessorTest {
 //        assertEquals("application/xml", dldr.detectContentType(dldr.download(new URL("file:src/test/resources/download-this.xml"))));
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private DownloadingProcessor newDownloadingProcessor() {
+        DownloadingUpdateProcessorFactory factory = 
+            new DownloadingUpdateProcessorFactory();
+        NamedList config = new SimpleOrderedMap();
+        config.add("useJREHttpClient", "true");
+        factory.init(config);
+        
+        return (DownloadingProcessor) factory.getInstance(request, response, nextStep);
+    }
+    
 }

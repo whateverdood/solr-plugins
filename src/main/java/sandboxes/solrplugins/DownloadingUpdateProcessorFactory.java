@@ -3,6 +3,9 @@ package sandboxes.solrplugins;
 
 import java.util.logging.Logger;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.cache.CachingHttpClient;
 import org.apache.solr.common.util.NamedList;
 import org.apache.solr.request.SolrQueryRequest;
 import org.apache.solr.response.SolrQueryResponse;
@@ -15,7 +18,7 @@ public class DownloadingUpdateProcessorFactory extends
 	private static final Logger LOG = Logger
 			.getLogger(DownloadingUpdateProcessorFactory.class.getName());
 	
-	boolean useJdkHttpClient = false;
+	HttpClient httpClient = new CachingHttpClient(new DefaultHttpClient());
 
 	public DownloadingUpdateProcessorFactory() {
 		// Do nothing.
@@ -24,11 +27,11 @@ public class DownloadingUpdateProcessorFactory extends
 	@Override
 	public void init(@SuppressWarnings("rawtypes") NamedList args) {
 		super.init(args);
-		Object jdkHttp = args.get("useJdkHttpClient");
-		if (jdkHttp != null) {
-		    useJdkHttpClient = Boolean.valueOf(jdkHttp.toString());
-		    if (useJdkHttpClient) {
+		Object useJREHttpClient = args.get("useJREHttpClient");
+		if (useJREHttpClient != null) {
+		    if (Boolean.valueOf(useJREHttpClient.toString())) {
 		        LOG.warning("Using the JDK HTTP client stack.");
+		        httpClient = null;
 		    }
 		}
 		LOG.info("Initialized.");
@@ -37,8 +40,9 @@ public class DownloadingUpdateProcessorFactory extends
 	@Override
 	public UpdateRequestProcessor getInstance(SolrQueryRequest req,
 			SolrQueryResponse resp, UpdateRequestProcessor np) {
-		DownloadingProcessor downloadingProcessor = new DownloadingProcessor(np);
-		downloadingProcessor.useJdkHttpClient = useJdkHttpClient;
+		DownloadingProcessor downloadingProcessor = new DownloadingProcessor(
+		    np, httpClient);
         return downloadingProcessor;
 	}
+
 }

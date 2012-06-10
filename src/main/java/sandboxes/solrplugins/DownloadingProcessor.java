@@ -10,8 +10,10 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.update.AddUpdateCommand;
 import org.apache.solr.update.processor.UpdateRequestProcessor;
@@ -28,12 +30,17 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 	
 	private Detector detector = new DefaultDetector();
 
-    boolean useJdkHttpClient = false;
+    HttpClient httpClient;
     
-    static DefaultHttpClient httpClient = new DefaultHttpClient();
+    ThreadLocal<HttpContext> httpContext = new ThreadLocal<HttpContext>() {
+        protected HttpContext initialValue() {
+            return new BasicHttpContext();
+        };
+    };
     
-	public DownloadingProcessor(UpdateRequestProcessor next) {
+	public DownloadingProcessor(UpdateRequestProcessor next, HttpClient httpClient) {
 		super(next);
+		this.httpClient = httpClient;
 	}
 
 	public void processAdd(AddUpdateCommand cmd) throws IOException {
@@ -69,11 +76,11 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
         if (LOG.isLoggable(Level.FINE))
             LOG.fine("Trying to download [" + url + "]");
         
-        if (useJdkHttpClient) {
+        if (httpClient == null) {
             return IOUtils.toByteArray(url.openStream());
         } else {
             HttpGet get = new HttpGet(url.toString());
-            HttpResponse response = httpClient.execute(get);
+            HttpResponse response = httpClient.execute(get, httpContext.get());
             if (200 == response.getStatusLine().getStatusCode()) {
                 HttpEntity entityBody = response.getEntity();
                 return IOUtils.toByteArray(entityBody.getContent());

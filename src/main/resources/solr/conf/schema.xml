@@ -522,6 +522,8 @@
    <field name="uri" type="string" indexed="true" stored="true" />
    <field name="raw-content" type="binary" indexed="false" stored="true" />
    <field name="likes" type="pint" indexed="true" stored="true" />
+   <field name="emphasizedText" type="text_general" indexed="true" stored="false" />
+   <field name="relation" type="text_general" indexed="true" stored="false" />
 
    <!-- catchall field, containing all other searchable text fields (implemented
         via copyField further on in this schema  -->

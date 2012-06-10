@@ -27,8 +27,12 @@ public class Extractors {
 		HashMap<String, String> xpaths = new HashMap<String, String>();
 		xpaths.put("title",   "h:head/h:title/text()");
 		xpaths.put("subject", "h:head/h:meta[@name='keywords']/@content");
-		xpaths.put("body",    "h:body/descendant::*[not(local-name(.)='script')]/text()");
+        xpaths.put("relation", "h:body//h:a/@href | h:body//h:a/text()");
+        // TODO: more Dublin Core index fields?
+        xpaths.put("body",    "h:body/descendant::*[not(local-name(.)='script')]/text()");
 		xpaths.put("text",    "descendant::*[not(local-name(.)='script' or local-name(.)='style')]/text()");
+		xpaths.put("emphasizedText", 
+		    "h:body//h:b/text() | h:body//h:i/text() | h:body//h:strong/text() | h:body//h:em/text() | h:body//h:h1/text() | h:body//h:h2/text() | h:body//h:h3/text()");
 		htmlExtractor.setFieldMappings(xpaths);
 
 		htmlExtractor.setXmlReaderClazz("org.ccil.cowan.tagsoup.Parser");
