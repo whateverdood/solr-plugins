@@ -2,9 +2,14 @@ package sandboxes.solrplugins.support;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
@@ -29,17 +34,25 @@ import org.xml.sax.XMLReader;
 
 public class XPathVisualizer {
     
+    private static final Logger LOG = Logger
+        .getLogger(XPathVisualizer.class.getName());
+
     /**
      * Mark-up the parts of the supplied <code>xml</code> that match
      * <code>expression</code> in an XHTML div. 
      * @param expression XPath to visualize.
-     * @param xml Well-formed XML.
+     * @param content Well-formed XML.
      * @return An XHTML div containing the marked-up XML.
      * @throws Exception
      */
-    public String visualize(String expression, String xml) throws Exception {
+    public String xplain(String expression, String content, String mediaType) 
+        throws Exception {
         
-        Document doc = toDom(xml);
+        if (LOG.isLoggable(Level.FINE)) {            
+            LOG.fine("xplaining [" + expression + "] in some [" + mediaType + "]");
+        }
+        
+        Document doc = toDom(content, mediaType);
 
         XPath xpath = xPathFactory.newXPath();
         NodeList nodes = (NodeList) xpath.evaluate(
@@ -47,7 +60,7 @@ public class XPathVisualizer {
         for (int i = 0; i < nodes.getLength(); i++) {
             Node hit = nodes.item(i);
             if (hit instanceof CharacterData) {
-                // can't add an Attr to CharacterData types, so wrap it.
+                // have to wrap CharacterData nodes in a new element
                 Element hitSpan = doc.createElement("span");
                 hitSpan.setAttribute("class", "hit");
                 
@@ -73,8 +86,19 @@ public class XPathVisualizer {
         return transform(doc);
     }
 
-    private Document toDom(String xml) throws Exception {
-        try {
+    List<String> htmlMediaTypes = Arrays.asList(new String[] {
+        "application/xhtml+xml",
+        "text/html",
+        "text/x-server-parsed-html"
+    });
+    
+    private Document toDom(String xml, String mediaType) throws Exception {
+        
+        Document dom = null;
+        if (htmlMediaTypes.contains(mediaType)) {
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine("Using JAXP with Tagsoup to make a DOM");
+            }
             Transformer transformer = factory.newTransformer();
             XMLReader reader = new Parser();
             reader.setFeature("http://xml.org/sax/features/namespaces", false);
@@ -82,17 +106,19 @@ public class XPathVisualizer {
             DOMResult result = new DOMResult();
             InputSource source = new InputSource(new StringReader(xml));
             transformer.transform(new SAXSource(reader, source), result);
-            return (Document) result.getNode();
-        } catch (Exception e) {
-            // *sniff* Something smells.
+            dom = (Document) result.getNode();
+        } else {
+            if (LOG.isLoggable(Level.FINE)) {
+                LOG.fine("Using JAXP to make a DOM");
+            }
             InputSource inputSource = new InputSource(new StringReader(xml));
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
-            Document dom = builder.parse(inputSource);
-            dom.normalize();
-            return dom;
+            dom = builder.parse(inputSource);
         }
+        dom.normalize();
+        return dom;
     }
-
+    
     /**
      * Use an XML Stylesheet to perform the actual transformation.
      * @param doc
@@ -101,30 +127,10 @@ public class XPathVisualizer {
      */
     String transform(Document doc) throws Exception {
         
-        Transformer transformer = factory.newTransformer(
-            new StreamSource(new StringReader(xsl)));
-            
+        Transformer transformer = stylesheet.newTransformer();
         StringWriter output = new StringWriter();
         transformer.transform(new DOMSource(doc), new StreamResult(output));
-        
         return output.toString();
-    }
-
-    static DocumentBuilderFactory builderFactory;
-    static {
-        builderFactory = DocumentBuilderFactory.newInstance();
-        builderFactory.setNamespaceAware(false);
-        builderFactory.setValidating(false);
-    }
-    
-    static TransformerFactory factory;
-    static {
-        factory = TransformerFactory.newInstance();
-    }
-    
-    static XPathFactory xPathFactory;
-    static {
-        xPathFactory = XPathFactory.newInstance();
     }
 
     // TODO: pull this out
@@ -137,7 +143,8 @@ public class XPathVisualizer {
 		"<!-- identity template -->\n" + 
 		"<xsl:template match=\"/\">\n" + 
 		"    <div>\n" + 
-		"        <style type=\"text/css\">\n" + 
+		"        <style type=\"text/css\">\n" +
+		"        body { font-size: small; }\n" +
 		"        ul {\n" + 
 		"            background-color: inherit;\n" + 
 		"            color: Purple;\n" + 
@@ -218,5 +225,28 @@ public class XPathVisualizer {
 		"</xsl:template>\n" + 
 		"\n" + 
 		"</xsl:stylesheet>";
+
+    static DocumentBuilderFactory builderFactory;
+    static {
+        builderFactory = DocumentBuilderFactory.newInstance();
+        builderFactory.setNamespaceAware(false);
+        builderFactory.setValidating(false);
+    }
+    
+    static TransformerFactory factory;
+    static Templates stylesheet;
+    static {
+        factory = TransformerFactory.newInstance();
+        try {
+            stylesheet = factory.newTemplates(new StreamSource(new StringReader(xsl)));
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+    
+    static XPathFactory xPathFactory;
+    static {
+        xPathFactory = XPathFactory.newInstance();
+    }
 
 }

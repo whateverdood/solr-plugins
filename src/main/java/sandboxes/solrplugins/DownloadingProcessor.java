@@ -66,13 +66,13 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
 		super.next.processAdd(cmd);
 	}
 
-	static String detectEncoding(byte[] bytes) {
+	public static String detectEncoding(byte[] bytes) {
 	    CharsetDetector csDetector = new CharsetDetector();
 	    csDetector.setText(bytes);
 	    return csDetector.detect().getName(); // accept the best match
     }
 
-    byte[] download(URL url) throws IOException {
+    public byte[] download(URL url) throws IOException {
         if (LOG.isLoggable(Level.FINE))
             LOG.fine("Trying to download [" + url + "]");
         
@@ -85,12 +85,13 @@ public class DownloadingProcessor extends UpdateRequestProcessor {
                 HttpEntity entityBody = response.getEntity();
                 return IOUtils.toByteArray(entityBody.getContent());
             }
+            IOUtils.toByteArray(response.getEntity().getContent()); // consume
             throw new IOException("Couldn't download [" + url + "] <- " + 
                 response.getStatusLine().toString());            
         }
 	}
 	
-	String detectContentType(byte[] bytes) throws IOException{
+	public String detectContentType(byte[] bytes) throws IOException{
 		return detector.detect(TikaInputStream.get(bytes), new Metadata()).toString();
 	}
 	

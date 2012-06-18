@@ -12,7 +12,8 @@ public class Extractors {
 		HashMap<String, XPathExtractor> map = new HashMap<String, XPathExtractor>();
 		XPathExtractor htmlExtractor = buildHtmlExtractor();
         map.put("text/html", htmlExtractor);
-		map.put("application/xhtml+xml", htmlExtractor);
+        map.put("application/xhtml+xml", htmlExtractor);
+        map.put("text/x-server-parsed-html", htmlExtractor);
 		return map;
 	}
 

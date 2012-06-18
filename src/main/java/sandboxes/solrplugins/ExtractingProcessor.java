@@ -61,7 +61,7 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		super.next.processAdd(cmd);
 	}
 
-	void extractData(SolrInputDocument doc) throws Exception {
+	public SolrInputDocument extractData(SolrInputDocument doc) throws Exception {
 		String mediaType = (String) doc.getFieldValue("media-type");
 		
         XPathExtractor extractor = Extractors.getExtractor(mediaType);
@@ -80,6 +80,8 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		if (LOG.isLoggable(Level.FINEST))
             LOG.finest("Extracted [" + doc + "] from [" + 
                 doc.getFieldValue("raw-content") + "]");
+		
+		return doc;
 	}
 
     @SuppressWarnings("unchecked")
