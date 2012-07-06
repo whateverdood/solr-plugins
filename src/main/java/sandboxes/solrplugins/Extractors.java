@@ -1,8 +1,14 @@
 package sandboxes.solrplugins;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
+import com.googlecode.shawty.Preprocessor;
 import com.googlecode.shawty.XPathExtractor;
+import com.googlecode.shawty.pp.Lowerer;
+import com.googlecode.shawty.pp.NoGPlusOnes;
 
 public class Extractors {
 
@@ -10,35 +16,43 @@ public class Extractors {
 
 	private static HashMap<String, XPathExtractor> initBeans() {
 		HashMap<String, XPathExtractor> map = new HashMap<String, XPathExtractor>();
-		XPathExtractor htmlExtractor = buildHtmlExtractor();
+		XPathExtractor htmlExtractor = newHtmlExtractor();
         map.put("text/html", htmlExtractor);
         map.put("application/xhtml+xml", htmlExtractor);
         map.put("text/x-server-parsed-html", htmlExtractor);
 		return map;
 	}
 
-	private static XPathExtractor buildHtmlExtractor() {
-		XPathExtractor htmlExtractor = new XPathExtractor();
-		htmlExtractor.setForEach("/h:html");
-
-		HashMap<String, String> namespaces = new HashMap<String, String>();
-		namespaces.put("h", "http://www.w3.org/1999/xhtml");
-		htmlExtractor.setNamespaces(namespaces);
+	private static XPathExtractor newHtmlExtractor() {
+		XPathExtractor extractor = new XPathExtractor();
+		extractor.setForEach("/html");
 
 		HashMap<String, String> xpaths = new HashMap<String, String>();
-		xpaths.put("title",   "h:head/h:title/text()");
-		xpaths.put("subject", "h:head/h:meta[@name='keywords']/@content");
-        xpaths.put("relation", "h:body//h:a/@href | h:body//h:a/text()");
-        // TODO: more Dublin Core index fields?
-        xpaths.put("body",    "h:body/descendant::*[not(local-name(.)='script')]/text()");
-		xpaths.put("text",    "descendant::*[not(local-name(.)='script' or local-name(.)='style')]/text()");
+		// Dublin Core metadata (http://dublincore.org/documents/dces/)
+		xpaths.put("creator",     "head/meta[@name='author']/@content");
+		xpaths.put("date",        "(head/meta[@name='date']/@content | head/meta[@name='revised']/@content | head/meta[@name='published']/@content)[0]");
+		xpaths.put("description", "head/meta[@name='abstract']/@content | head/meta[@name='description']/@content");
+		xpaths.put("identifier",  "(head/meta[@name='identifier']/@content | head/meta[@name='dc.identifier']/@content)[0]");
+        xpaths.put("publisher",   "head/meta[@name='owner']/@content");
+        xpaths.put("relation",    "body//a/@href | body//a/text()");
+        xpaths.put("rights",      "head/meta[@name='copyright']/@content");
+		xpaths.put("subject",     "head/meta[@name='keywords']/@content");
+        xpaths.put("title",       "head/title/text()");
+        xpaths.put("type",        "head/meta[@name='resource-type']/@content");
+        // other (i.e. made-up :-)
+        xpaths.put("body",        "body/descendant::*[not(local-name(.)='script')]/text()");
+		xpaths.put("text",        "descendant::*[not(local-name(.)='script' or local-name(.)='style')]/text()");
 		xpaths.put("emphasizedText", 
-		    "h:body//h:b/text() | h:body//h:i/text() | h:body//h:strong/text() | h:body//h:em/text() | h:body//h:h1/text() | h:body//h:h2/text() | h:body//h:h3/text()");
-		htmlExtractor.setFieldMappings(xpaths);
+		    "body//b/text() | body//i/text() | body//strong/text() | body//em/text() | body//h1/text() | body//h2/text() | body//h3/text()");
+		
+		extractor.setFieldMappings(xpaths);
+		extractor.setXmlReaderClazz("org.ccil.cowan.tagsoup.Parser");
+		
+        extractor.setPreprocessors(Arrays.asList(
+            new Lowerer(), // Lower the input so the XPath expressions become case-insensitive :-/
+            new NoGPlusOnes())); // Easier to just mangle the dumb g:plusone tags then deal with declaring a ton of namespaces. 
 
-		htmlExtractor.setXmlReaderClazz("org.ccil.cowan.tagsoup.Parser");
-
-		return htmlExtractor;
+		return extractor;
 	}
 
 	public static void addExtractor(String name, XPathExtractor extractor) {

@@ -19,7 +19,7 @@
     <baseDirectory>.</baseDirectory>
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
-        <!-- webapp for driving feeds into this -->
+        <!-- webapp for driving feeds into this Solr instance -->
         <fileSet>
             <directory>src/main/webapp</directory>
             <outputDirectory>webapps/solrplugins</outputDirectory>
@@ -32,6 +32,13 @@
             <outputDirectory>.</outputDirectory>
             <includes>
                 <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/java</directory>
+            <outputDirectory>webapps/solrplugins/WEB-INF/classes</outputDirectory>
+            <includes>
+                <include>xplainer.xsl</include>
             </includes>
         </fileSet>
     </fileSets>

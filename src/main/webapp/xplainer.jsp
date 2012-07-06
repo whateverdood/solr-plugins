@@ -1,8 +1,8 @@
-<%@page import="org.apache.commons.codec.net.URLCodec"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="org.apache.commons.codec.net.URLCodec"%>
 <%@page import="com.googlecode.shawty.XPathExtractor"%>
 <%@page import="sandboxes.solrplugins.*"%>
-<%@page import="sandboxes.solrplugins.support.XPathVisualizer"%>
+<%@page import="sandboxes.solrplugins.support.XPlainer"%>
 <%@page import="org.apache.commons.io.*"%>
 <%@page import="org.apache.commons.lang.*"%>
 <%@page import="org.apache.solr.common.*"%>
@@ -26,16 +26,22 @@ String visualized = null;
 SolrInputDocument doc = null;
 
 if (!StringUtils.isEmpty(submitted)) {
-    if (!StringUtils.isEmpty(expression) && !StringUtils.isEmpty(url)) {
+    if (!StringUtils.isEmpty(url)) {
         DownloadingProcessor downloader = 
             (DownloadingProcessor) dlFactory.getInstance(null, null, null);
         byte[] resource = downloader.download(new URL(url));
         
-        String rawContent = new String(resource);
+        String rawContent = new String(resource).toLowerCase();
         String mediaType = downloader.detectContentType(resource);
         
-        visualized = new XPathVisualizer().xplain(expression, rawContent, mediaType);
+        XPathExtractor xctor = Extractors.getExtractor(mediaType);
+        Map<String, String> xpaths = xctor.getFieldMappings();
         
+        if (!StringUtils.isEmpty(expression)) {
+            visualized = new XPlainer().xplain(
+                xctor.getForEach(), xpaths, rawContent, mediaType);
+        }
+
         ExtractingProcessor extractor = 
             (ExtractingProcessor) xFactory.getInstance(null, null, null);
         
@@ -57,6 +63,7 @@ if (!StringUtils.isEmpty(submitted)) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>XPlainer (XPath visualization)</title>
+        <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
         <style type="text/css">
             html, body {
                 margin: 0 auto;
@@ -70,10 +77,10 @@ if (!StringUtils.isEmpty(submitted)) {
             td {
                 vertical-align: top;
             }
-            #lhs {
-                border-top: 1px solid #ccc;                
+            .lhs {
+                border-top: 1px solid #ccc;
             }
-            #rhs {
+            .rhs {
                 border-left: 1px solid #ccc;
                 border-top: 1px solid #ccc;
                 width: 66%;
@@ -83,12 +90,12 @@ if (!StringUtils.isEmpty(submitted)) {
     <body>
     <h3></h3>
     <form name="viz" method="get">
-    <label for="x">Active XPath expression:</label>
-    <input type="text" name="x" value="<%=expression%>" size="70" onchange="document.getElementById('submit').removeAttribute('disabled');" />
-    <label for="url">URL:</label>
-    <input type="text" name="url" value="<%=url%>" size="70" onchange="document.getElementById('submit').removeAttribute('disabled');" />
-    <input type="hidden" name="submitted" value="yes" />
-    <input type="submit" value="Show Me" disabled="disabled" id="submit" />
+        <label for="x">Active XPath expression:</label>
+        <input type="text" name="x" value="<%=expression%>" size="70" onchange="document.getElementById('submit').removeAttribute('disabled');" />
+        <label for="url">URL:</label>
+        <input type="text" name="url" value="<%=url%>" size="70" onchange="document.getElementById('submit').removeAttribute('disabled');" />
+        <input type="hidden" name="submitted" value="yes" />
+        <input type="submit" value="Show Me" disabled="disabled" id="submit" />
     </form>
     <table>
     <tr>
@@ -96,7 +103,7 @@ if (!StringUtils.isEmpty(submitted)) {
         <th>Resource: <%=url%></th>
     </tr>
     <tr>
-    <td id="lhs">
+    <td class="lhs">
     <%
     if (doc != null) {
         XPathExtractor extractor = Extractors.getExtractor(
@@ -113,7 +120,7 @@ if (!StringUtils.isEmpty(submitted)) {
             <dt>
             <%
             if (null != extractor) {
-                // YIKES
+                // YIKES this kind of blows
                 String xpath = xpathRoot + "/" + mappings.get(field);
                 xpath = xpath.replaceAll(" \\| ", " | " + xpathRoot + "/");
                 xpath = xpath.replaceAll("h:", ""); // *sigh*
@@ -134,7 +141,7 @@ if (!StringUtils.isEmpty(submitted)) {
     <%    
     }%>
     </td>
-    <td id="rhs" class="visualization">
+    <td class="rhs" class="visualization">
         <%=visualized %>
     </td>
     </tr>

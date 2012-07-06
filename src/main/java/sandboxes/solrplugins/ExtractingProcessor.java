@@ -84,15 +84,14 @@ public class ExtractingProcessor extends UpdateRequestProcessor {
 		return doc;
 	}
 
-    @SuppressWarnings("unchecked")
-	void extractKnownContent(SolrInputDocument doc, XPathExtractor extractor) 
+    void extractKnownContent(SolrInputDocument doc, XPathExtractor extractor) 
 	    throws Exception {
 	    
 		byte[] bytes = toByteArray(doc.getFieldValue("raw-content"));
 		String document = new String(bytes, 
 		    DownloadingProcessor.detectEncoding(bytes));
 		
-		List<Map<String, ?>> extracted = extractor.extract(
+		List<Map<String, List<String>>> extracted = extractor.extract(
 		    document);
         
 		if (!extracted.isEmpty()) {

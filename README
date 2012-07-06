@@ -45,11 +45,11 @@ _______________________________________________________________________________
 Before you build
 
 1. Install Maven 3
-2. Install ${solr-plugins}/lib/shawty-0.9.3.jar (http://code.google.com/p/shawty/) 
+2. Install ${solr-plugins}/lib/shawty-0.9.4.jar (http://code.google.com/p/shawty/) 
 into your local maven repo:
 
-    $ mvn install:install-file -Dfile=lib/shawty-0.9.3.jar -DgroupId=com.googlecode \
-        -DartifactId=shawty -Dversion=0.9.3 -Dpackaging=jar
+    $ mvn install:install-file -Dfile=lib/shawty-0.9.4.jar -DgroupId=com.googlecode \
+        -DartifactId=shawty -Dversion=0.9.4 -Dpackaging=jar
 
 You should be ready to build:
 
