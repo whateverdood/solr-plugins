@@ -116,23 +116,20 @@ if (!StringUtils.isEmpty(submitted)) {
         for (String field : new TreeSet<String>(doc.keySet())) {
             if (dontDisplay.contains(field)) {
                 continue;
-            }%>
-            <dt>
-            <%
+            }
+
+            String xpath = "";
             if (null != extractor) {
                 // YIKES this is kind of smelly!
-                String xpath = xpathRoot + "/" + mappings.get(field);
+                xpath = xpathRoot + "/" + mappings.get(field);
                 xpath = xpath.replaceAll(" \\| ", " | " + xpathRoot + "/");
                 xpath = xpath.replaceAll("h:", ""); // *sigh*
-                %>
-                <span class="fieldRevealer" id="<%=field%>" title="<%=xpath%>"><%=field%></span>
-                <%
-            } else {%>
-                <%=field%><%
             }
             %>
+            <dt title="<%=xpath%>">
+                <span class="fieldRevealer" id="<%=field%>"><%=field%></span>
             </dt>
-            <dd><%=StringEscapeUtils.escapeHtml(doc.getFieldValue(field).toString())%></dd><%
+            <dd title="<%=xpath%>"><%=StringEscapeUtils.escapeHtml(doc.getFieldValue(field).toString())%></dd><%
         }%>
         </dl>
     <%    
