@@ -6,34 +6,6 @@
  
 <xsl:template match="/"> 
     <div> 
-        <style type="text/css">
-        body { font-size: small; }
-        ul { 
-            background-color: inherit; 
-            color: Purple; 
-            list-style: none; 
-            margin-left: -2em; 
-        } 
-        li { 
-            background-color: inherit; 
-            display: inline; 
-        } 
-        span.tag { 
-            color: Purple; 
-        } 
-        span.attr-name { 
-            color: Red; 
-        } 
-        span.attr-value { 
-            color: Blue; 
-        } 
-        span.cdata { 
-            color: Black; 
-        } 
-        .hit { 
-            background-color: LightGoldenRodYellow; 
-        } 
-        </style> 
         <xsl:apply-templates /> 
     </div> 
 </xsl:template> 

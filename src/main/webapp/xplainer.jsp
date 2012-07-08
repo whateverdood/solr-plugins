@@ -1,5 +1,4 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="org.apache.commons.codec.net.URLCodec"%>
 <%@page import="com.googlecode.shawty.XPathExtractor"%>
 <%@page import="sandboxes.solrplugins.*"%>
 <%@page import="sandboxes.solrplugins.support.XPlainer"%>
@@ -51,66 +50,35 @@ if (!StringUtils.isEmpty(submitted)) {
         visualized = "Fill out the form!";
     }    
 } else {
-    url = "http://www.samharris.org"; // good metadata here
+    url = "http://www.samharris.org"; // good HTML metadata at this site
 }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>XPlainer (XPath visualization of extracted metadata)</title>
+        <title>XPlainer (visualization of extracted metadata)</title>
         <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="xplainer.js"></script>
-        <style type="text/css">
-            html, body {
-                margin: 0 auto;
-                padding: 0 1em;
-            }
-            table {
-                width: 100%;
-            }
-            tr {
-            }
-            td {
-                vertical-align: top;
-            }
-            .lhs {
-                border-top: 1px solid #ccc;
-            }
-            .rhs {
-                border-left: 1px solid #ccc;
-                border-top: 1px solid #ccc;
-                width: 66%;
-            }
-            .fieldRevealer {
-                color: blue;
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        </style>
+        <link type="text/css" href="xplainer.css" rel="stylesheet" media="all" />
     </head>
     <body>
-    <h3></h3>
-    <form name="viz" method="get">
-        <label for="url">Visualize the metadata extraction for URL:</label>
-        <input type="text" name="url" value="<%=url%>" size="70" onforminput="document.getElementById('submit').removeAttribute('disabled');" />
+    <form id="viz" method="get">
+        <label for="url">Explore the metadata extraction for URL:</label>
+        <input type="text" name="url" value="<%=url%>" size="70" />
         <input type="hidden" name="submitted" value="yes" />
-        <input type="submit" value="Show Me" disabled="disabled" id="submit" />
+        <input type="submit" value="Show Me" id="submit" />
     </form>
-    <table>
-    <tr>
-        <th>Extracted fields</th>
-        <th>...for resource: <%=url%></th>
-    </tr>
-    <tr>
-    <td class="lhs">
+    <div id="results">
+    <div class="lhs bold header">Extracted fields</div>
+    <div class="rhs bold header">Resource: <%=url%></div>
+    <div class="lhs extracts">
     <%
     if (doc != null) {
         XPathExtractor extractor = Extractors.getExtractor(
             doc.getFieldValue("media-type").toString());
         String xpathRoot = (String) extractor.getForEach();
         Map<String, String> mappings = (Map<String, String>) extractor.getFieldMappings();
-        URLCodec codec = new URLCodec();
         %>
         <dl><%
         for (String field : new TreeSet<String>(doc.keySet())) {
@@ -123,7 +91,7 @@ if (!StringUtils.isEmpty(submitted)) {
                 // YIKES this is kind of smelly!
                 xpath = xpathRoot + "/" + mappings.get(field);
                 xpath = xpath.replaceAll(" \\| ", " | " + xpathRoot + "/");
-                xpath = xpath.replaceAll("h:", ""); // *sigh*
+                xpath = xpath.replaceAll("h:", ""); // *sigh* just in case
             }
             %>
             <dt title="<%=xpath%>">
@@ -134,11 +102,10 @@ if (!StringUtils.isEmpty(submitted)) {
         </dl>
     <%    
     }%>
-    </td>
-    <td class="rhs visualization">
+    </div>
+    <div class="rhs visualization">
         <%=visualized %>
-    </td>
-    </tr>
-    </table>    
+    </div>
+    </div>
     </body>
 </html>

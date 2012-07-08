@@ -1,0 +1,95 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-size: small;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#viz {
+    text-align: center;
+}
+
+#results {
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+}
+
+.lhs {
+    float: left;
+    width: 33%;
+}
+
+.rhs {
+    float: left;
+    width: 66%;
+}
+
+.extracts {
+    border-top: 1px solid #ccc;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.visualization {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 66%;
+}
+
+.fieldRevealer {
+    color: blue;
+    cursor: pointer;
+}
+
+.fieldRevealer:hover {
+    text-decoration: underline;
+}
+
+ul {
+    background-color: inherit;
+    color: Purple;
+    list-style: none;
+    margin-left: -2em;
+}
+
+li {
+    background-color: inherit;
+    display: inline;
+}
+
+span.tag {
+    color: Purple;
+}
+
+span.attr-name {
+    color: Red;
+}
+
+span.attr-value {
+    color: Blue;
+}
+
+span.cdata {
+    color: Black;
+}
+
+.hit {
+    background-color: LightGoldenRodYellow;
+}
