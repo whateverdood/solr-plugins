@@ -4,7 +4,6 @@
  
 <xsl:strip-space elements="*"/> 
  
-<!-- identity template --> 
 <xsl:template match="/"> 
     <div> 
         <style type="text/css">
@@ -42,17 +41,18 @@
 <xsl:template match="*"> 
     <ul> 
         <li>
-            <span class="tag">
+            <xsl:variable name="hitClass" select="@class" />
+            <span class="tag {$hitClass}">
                 <xsl:text>&lt;</xsl:text><xsl:value-of select="local-name(.)"/><xsl:apply-templates select="@*[not(local-name(.)='class')]"/><xsl:text>&gt;</xsl:text>
             </span> 
             <xsl:apply-templates select="node()"/> 
-            <span class="tag"> 
+            <span class="tag {$hitClass}"> 
                 <xsl:text>&lt;/</xsl:text><xsl:value-of select="local-name(.)"/><xsl:text>&gt;</xsl:text> 
             </span> 
         </li>
     </ul> 
-</xsl:template> 
- 
+</xsl:template>
+
 <xsl:template match="@*"> 
     <xsl:text> </xsl:text> 
     <span class="attr-name"><xsl:value-of select="local-name(.)"/></span> 
@@ -60,7 +60,8 @@
 </xsl:template> 
  
 <xsl:template match="text()"> 
-    <span class="cdata"> 
+    <xsl:variable name="hitClass" select="@class | ../@class" />
+    <span class="cdata {$hitClass}"> 
         <xsl:value-of select="."/> 
     </span> 
 </xsl:template> 

@@ -91,7 +91,7 @@ public class XPlainer {
                     }
                 } else if (hit instanceof Attr) {
                     Element e = ((Attr) hit).getOwnerElement();
-                    e = addClass(e, field);
+                    e = addClass(e, hitClass);
                     if (LOG.isLoggable(Level.FINEST)) {
                         LOG.finest("XPath [" + x + "] hit for field [" + field + 
                             "] on Attribute -> [" + hit + "]");
@@ -123,7 +123,9 @@ public class XPlainer {
         if (StringUtils.isEmpty(classAttribute)) {
             e.setAttribute("class", value);                    
         } else {
-            e.setAttribute("class", value + " " + classAttribute);
+            if (!classAttribute.contains(value)) {
+                e.setAttribute("class", value + " " + classAttribute);                
+            }
         }
         return e;
     }
