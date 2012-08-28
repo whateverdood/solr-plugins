@@ -108,6 +108,12 @@
 		    <artifactId>shawty</artifactId>
 		    <version>0.9.4</version>
 		</dependency>
+		<!-- com.googlecode.shawty needs Groovy... -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>1.7.6</version>
+        </dependency>
 	</dependencies>
 
 	<build>
