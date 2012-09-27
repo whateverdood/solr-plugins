@@ -54,9 +54,9 @@ public class ExtractingUpdateProcessorFactoryTest {
 
 		Map<String, String> expected = new HashMap<String, String>();
 		expected.put("media-type", "text/html");
-		expected.put("title", "This is a test HTML document");
+		expected.put("title", "this is a test html document");
 		expected.put("subject", "test solr lucene apache");
-		expected.put("body", "This is an important title Craft beer irony banksy whatever, wes anderson brunch readymade fixie.");
+		expected.put("body", "this is an important title craft beer irony banksy whatever, wes anderson brunch readymade fixie.");
 		params.add(new Object[] { "file:src/test/resources/download-this.html",
 				"text/html", expected, 97 });
 
